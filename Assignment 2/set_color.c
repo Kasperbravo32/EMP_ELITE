@@ -3,7 +3,7 @@
 * MODULENAME.: SET_LED.c
 *
 * PROJECT....: Assignment 2
-*
+* This is a change
 * DESCRIPTION: See module specification file (.h-file).
 *
 * Change Log: ************************************************************/
