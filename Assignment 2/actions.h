@@ -9,11 +9,7 @@
 #define ACTIONS_H_
 
 
-
-
 INT8U determine_click();
-
-
 
 
 
