@@ -1,2 +1,2 @@
-# EMP2017
-Assignments made in the Embedded Programming course 2017
+# Welcome to the the EMP_ELITE
+State of the art Embedded Programming course 2017
