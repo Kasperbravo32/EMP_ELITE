@@ -9,7 +9,7 @@
 #define PROCESSES_H_
 
 
-int process_button(int button , int state_2);
+int process_click(int button , int state_2);
 
 
 #endif /* PROCESSES_H_ */

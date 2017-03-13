@@ -50,7 +50,7 @@ int main(void)
             }
 
         event = determine_click();
-        state = process_button(event,state);
+        state = process_click(event,state);
 
         RUN_STATE(state);
     }
