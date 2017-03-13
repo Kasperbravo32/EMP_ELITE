@@ -12,3 +12,4 @@
 #define TRAFFIC_LIGHT   3
 
 #endif /* STATES_H_ */
+//this is a comment
