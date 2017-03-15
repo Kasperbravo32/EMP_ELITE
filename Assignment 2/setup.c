@@ -2,7 +2,7 @@
  * setup.c
  *
  *  Created on: 7. mar. 2017
- *      Author: Frederik
+ *      Author: Frederik and people
  */
 #include <stdint.h>
 #include "tm4c123gh6pm.h"

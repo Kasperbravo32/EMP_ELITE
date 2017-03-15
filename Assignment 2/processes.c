@@ -11,7 +11,7 @@
 
 
 
-int process_button(int button, int state_2)
+int process_click(int button, int state_2)
 {
     switch(button)
     {

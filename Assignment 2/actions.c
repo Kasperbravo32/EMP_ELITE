@@ -23,6 +23,7 @@
 #define FIRST_RELEASE 2
 #define SECOND_PUSH   3
 #define LONG_PUSH     4
+// Jeg ændrer lige noget
 
 // ------------------------------------------
 //              Functions
