@@ -16,11 +16,9 @@
 #include "state_run.h"
 #include "set_color.h"
 
-
 #define SW1 0b10000
 #define SW2 0b00001
 // Hallo
-
 extern INT16S ticks;
 
 int main(void)
@@ -52,7 +50,7 @@ int main(void)
             }
 
         event = determine_click();
-        state = process_click(event,state);
+        state = process_button(event,state);
 
         RUN_STATE(state);
     }
