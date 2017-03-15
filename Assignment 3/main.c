@@ -8,24 +8,15 @@
 #include "setup.h"
 #include "systick.h"
 #include "timers.h"
-
-#include "events.h"
-#include "actions.h"
-#include "states.h"
-#include "processes.h"
-#include "state_run.h"
 #include "set_color.h"
 
-#define SW1 0b10000
-#define SW2 0b00001
-// Hallo
 extern INT16S ticks;
-
+// Ændrer i assignment 3!
 int main(void)
 {
-    INT8U state = TRAFFIC_LIGHT;
+    INT8U click;
+    INT8U output;
 
-    int event;
 
     INT8U alive_timer = TIMER_500;
 
@@ -49,10 +40,9 @@ int main(void)
               GPIO_PORTD_DATA_R ^= 0x40;
             }
 
-        event = determine_click();
-        state = process_button(event,state);
-
-        RUN_STATE(state);
+        click  = determine_click();
+        output = lcdcase        (click);
+                 react          (output);
     }
 
     return 0;
