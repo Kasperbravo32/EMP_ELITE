@@ -11,7 +11,6 @@
 
 #include "events.h"
 #include "actions.h"
-
 #include "set_color.h"
 
 #define SW1 0b10000
@@ -47,6 +46,8 @@ int main(void)
             }
 
         event = determine_click();
+
+
 
     }
 

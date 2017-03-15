@@ -12,6 +12,7 @@
 //                  Timers for misc. uses
 // -------------------------------------------------
 
+#define TIMER_5       5
 #define TIMER_100    20                             // ~100 milliseconds
 #define TIMER_200    40                             // ~200 milliseconds
 #define TIMER_500   100                             // ~500 milliseconds
