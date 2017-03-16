@@ -43,19 +43,19 @@ void lcd_init(void)
     // wait 500ms
     wait(500);
     //First try
-    lcd_write4(LCD_D4 | LCD_D5); // 0x30 = 0x10 | 0x20
+    lcd_write4(0x03); // 0x30 = 0x10 | 0x20
     wait_micro(4500);
 
     //Second try
-    lcd_write4(LCD_D4 | LCD_D5);                    // 0x30 = 0x10 | 0x20
+    lcd_write4(0x03);                    // 0x30 = 0x10 | 0x20
     wait_micro(4500);
 
     //Third and lucky try
-    lcd_write4(LCD_D4 | LCD_D5);                    // 0x30 = 0x10 | 0x20
+    lcd_write4(0x03);                    // 0x30 = 0x10 | 0x20
     wait_micro(200);
 
     //enable 4bit mode
-    lcd_write4(LCD_D5);                             // 0x20
+    lcd_write4(0x02);                             // 0x20
     wait_micro(200);
 
     //4 bit mode, 1/16, 5x8 font
@@ -98,12 +98,10 @@ void lcd_write4(int value)
 
 void pulse_enable(void)
 {
-    GPIO_PORTD_DATA_R |= LCD_E;
-    wait_micro(1);
     GPIO_PORTD_DATA_R &= ~(LCD_E);
     wait_micro(1);                                  // enable pulse must be more than 450ns
     GPIO_PORTD_DATA_R |= LCD_E;
-    wait_micro(100);                                // commands need > 37us to settle
+    wait_micro(10);                                // commands need > 37us to settle
 }
 
 // Waits in microsecounds*time
