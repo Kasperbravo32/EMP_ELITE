@@ -10,20 +10,23 @@
 #define LCD_E                   0x08    // PD3
 
 #define LCD_CLEAR_DISPLAY       0x01    // Clear display
-#define LCD_DISPLAY_OFF         0x08    // Display off
+#define LCD_DISPLAY_OFF         0x08    // Display off
 #define LCD_DISPLAY_ON_BLINK    0x0C    // Display on with blinking cursor
 #define LCD_FUNCTIONRESET       0x03    // Function reset
 #define LCD_ENABLE_4BIT         0x02    // Enable 4bit mode
 #define LCD_FUNCTION_SET        0x28    // 4 bit mode, 1/16, 5x8 font
 #define LCD_ENTRYMODE           0x06    // Entry mode 
-#define LCD_HOME                0x02    // Home
+#define LCD_HOME                0x01    // Home
 //******************* Function declaration *******************//
-void wait_micro( int time );
+void wait_micro(int time);
 void lcd_write8(int value);
 void lcd_write4(int value);
 void pulse_enable(void);
+void lcd_pinsetup(void);
+void lcd_write(int value);
+void lcd_init(void);
 void init_LCD(void);
-void wait(int time);
+void wait( int time );
 
 // This function sets up the LCD display for the EMP board
 int main(void)
@@ -37,6 +40,7 @@ int main(void)
     GPIO_PORTD_DATA_R &= ~(LCD_RS);
     lcd_write8(LCD_CLEAR_DISPLAY);
     wait_micro(10);
+    lcd_write(0b01010101);
 
     while(1);
 
