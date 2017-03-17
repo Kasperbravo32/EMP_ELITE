@@ -11,7 +11,6 @@
 #include "set_color.h"
 
 extern INT16S ticks;
-// Ændrer i assignment 3!
 int main(void)
 {
     INT8U click;
@@ -26,6 +25,7 @@ int main(void)
     enable_global_int();
 
     while(1)
+
     {
 
 
