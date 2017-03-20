@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
+#include "emp_type.h"
 
 #define LCD_D4                  0x10    // PC4
 #define LCD_D5                  0x20    // PC5
@@ -24,36 +25,18 @@ void lcd_write8(int value);
 void lcd_write4(int value);
 void pulse_enable(void);
 void lcd_pinsetup(void);
-void lcd_write(int value);
-void lcd_init(void);
-void init_LCD(void);
-void wait( int time );
+void lcd_write_char(int value);
+void wait(int time);
 
-// This function sets up the LCD display for the EMP board
+void lcd_init(void);
+void lcd_print(INT8U string_type[]);
+void lcd_shift(int value);
+void lcd_setcursor(int value);
+
 int main(void)
 {
-    lcd_pinsetup();     //Setting up pins
-    GPIO_PORTF_DATA_R &= ~(0x0E);          //slukker RS og Enable
-
     lcd_init();         //Initializing LCD
 
-    //Clear display
-    GPIO_PORTD_DATA_R &= ~(LCD_RS);
-    lcd_write8(LCD_CLEAR_DISPLAY);
-    wait_micro(1000);
-
-
-    lcd_write('T');
-    lcd_write('I');
-    lcd_write('S');
-    lcd_write('S');
-    lcd_write('E');
-    lcd_write('M');
-    lcd_write('Y');
-    lcd_write('N');
-    lcd_write('D');
-    wait(100);
-    GPIO_PORTF_DATA_R |= 0x02;
 
     while(1);
 
@@ -61,9 +44,53 @@ int main(void)
 }
 //******************* End of function *******************//
 
-//******************* HARDWARE SETUP *******************//
-void lcd_write_string()
+//******************* Set cursor *******************//
+void lcd_setcursor(int width, BOOLEAN height)
+{
+    if (height) // If height is 1 add a linebreak
+    {
+        width = width + 0x28; // add linebreak
+    }
+    if (width > 16-1) // Make sure cursor is within borders of the display
+    {
+        width = 0x00; // If not, back to home.
+    }
+    lcd_write8(width); //Set cursor
+}
+//******************* End of function *******************//
 
+//******************* Display shift *******************//
+// Shifts the display to the right.
+void lcd_shift(int value)
+{
+    while(value)
+    {
+        lcd_write8(0x1C); //Display shift
+        wait(50);
+        value--;
+    }
+}
+//******************* End of function *******************//
+
+//******************* Print string *******************//
+// Print a string, if the string is longer than 16 characters add linebreak. NOTE: that it does not work for the second line
+void lcd_print(INT8U string_type[])
+{
+    volatile int i = 0;                 // Resets i every time the function is entered
+    while(string_type[i] != 0)          // Runs the loop until the string is "empty".
+    {
+        lcd_write_char(string_type[i]); // Print the i'th element of the string.
+        i++;
+        if (i == 16)                    // If the string makes it to the end of the display add a linebreak.
+        {
+            lcd_write8(0xA8);           //break line
+        }
+        wait_micro(80);
+    }
+}
+//******************* End of function *******************//
+
+//******************* HARDWARE SETUP *******************//
 void lcd_pinsetup(void)
 {
 
@@ -99,13 +126,15 @@ void lcd_pinsetup(void)
 //************ Initializing of the LCD display *************//
 void lcd_init(void)
 {
+    lcd_pinsetup();     //Setting up pins
+
     // This part is nessesary beacouse we are working with 3.3V logic and power and not 5V
     // The reset circuit only works when Vcc is above 4.5V
     // Need to implement som timing, cause of the slow access times on the LCD
-    GPIO_PORTC_DATA_R &= ~(0xF0);       //slukker alle data porte
-    GPIO_PORTD_DATA_R &= ~(0x0C);       //slukker RS og Enable
+    GPIO_PORTC_DATA_R &= ~(0xF0);       // Makes sure the datapins is off
+    GPIO_PORTD_DATA_R &= ~(0x0C);       // Same for enable and RS
 
-    wait(500);                         // wait 500ms
+    wait(500);                          // wait 500ms
 
     lcd_write4(LCD_FUNCTIONRESET);      //First try
     wait_micro(40000);
@@ -131,48 +160,48 @@ void lcd_init(void)
     lcd_write8(LCD_ENTRYMODE);          // Entry mode 
     wait_micro(160);
 
-    lcd_write8(LCD_HOME);                   // Home
+    lcd_write8(LCD_HOME);               // Home
     wait_micro(160);
 
 }
 //******************* End of function *******************//
 
 // Writing characters to the display
-void lcd_write(int value)
+void lcd_write_char(int value)
 {
-    // Enables the LCD_RS pin to set the LCD in data mode
-    GPIO_PORTD_DATA_R |= LCD_RS;
-    wait_micro(200);
-    lcd_write8(value);
+    GPIO_PORTD_DATA_R |= LCD_RS;    // Enables the LCD_RS pin to set the LCD in data mode
     wait_micro(20);
-    GPIO_PORTD_DATA_R &= ~(LCD_RS);
+    lcd_write8(value);              // Write char
+    wait_micro(20);
+    GPIO_PORTD_DATA_R &= ~(LCD_RS); //Makes sure the RS, is pull down. (optimisation could be to wait by setting the RS low when done with writing string.)
 }
 //******************* End of function *******************//
 
 // Sends a byte in two halvs.
 void lcd_write8(int value)
 {
-    GPIO_PORTC_DATA_R &= ~( 0xF0 );             // Makes sure that the bits are turned off.
-    GPIO_PORTC_DATA_R |= ( value );     //Tænder for de øvre bits
-    pulse_enable();                             // Sender en puls på enable for at sende bits
-    GPIO_PORTC_DATA_R &= ~( 0xF0 );             // Søger for at de bliver slukket igen
-
-    GPIO_PORTC_DATA_R |= (value << 4);          //Tænder for de øvre bits
-    pulse_enable();                             // Sender en puls på enable for at sende bits
-    GPIO_PORTC_DATA_R &= ~( 0xF0 );             // Søger for at de bliver slukket igen
     // I do not call the lcd_write4 because I want the program to be relatively fast.
-    // Right shift does not save the value
+    GPIO_PORTC_DATA_R &= ~( 0xF0 );             // Makes sure that the bits are turned off.
+    GPIO_PORTC_DATA_R |= ( value );             // Enable the upper nibble.
+    pulse_enable();                             // Sends a pulse on the enable pin to make the controller read the data.
+    GPIO_PORTC_DATA_R &= ~( 0xF0 );             // Make sure the datapins is turned off before sending more data.
+
+    // NOTE: Right shift does not save the value
+    GPIO_PORTC_DATA_R |= (value << 4);          // Enable the lower nibble.
+    pulse_enable();                             // Sends a pulse on the enable pin to make the controller read the data.
+    GPIO_PORTC_DATA_R &= ~( 0xF0 );             // Make sure the datapins is turned off before sending more data.
+
 }
 //******************* End of function *******************//
 
 // If the LCD is in 8bit mode this command sends a 4bit value on the the highbits
 void lcd_write4(int value)
 {
-    GPIO_PORTD_DATA_R &= ~(LCD_RS);
+    GPIO_PORTD_DATA_R &= ~( LCD_RS );
     GPIO_PORTC_DATA_R &= ~( 0xF0 );             // Makes sure that the bits are turned off.
 
-    GPIO_PORTC_DATA_R |= (value << 4);          // Left shift the bits to make them sit on the highbits.
-    pulse_enable();                             // Sends a pulse.
+    GPIO_PORTC_DATA_R |= ( value << 4 );        // Left shift the bits to make them sit on the highbits.
+    pulse_enable();                             // Sends a pulse on the enable pin.
     GPIO_PORTC_DATA_R &= ~( 0xF0 );             // Turns the bits off.
 }
 //******************* End of function *******************//
@@ -181,12 +210,15 @@ void lcd_write4(int value)
 void pulse_enable(void)
 {
     GPIO_PORTD_DATA_R |= LCD_E;
-    wait_micro(1);                              // enable pulse must be more than 450ns
+    wait_micro(1);                              // Enable pulse must be more than 450ns
     GPIO_PORTD_DATA_R &= ~(LCD_E);
-    wait_micro(1);                              // commands need > 37us to settle
+    wait_micro(1);                              // Commands need > 37us to settle
 }
 //******************* End of function *******************//
 
+
+
+// thies funktion most be changed to software timers!!
 // Waits in microsecounds*time
 void wait_micro( int time )
 {                           //80Mhz CPU
