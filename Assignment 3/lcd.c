@@ -1,6 +1,13 @@
+/*
+ * lcd.c
+ *
+ *  Created on: 20. mar. 2017
+ *      Author: Lars Nørgaard Larsen
+ */
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 #include "emp_type.h"
+#include "lcd.h"
 
 //******************* Defines *******************//
 // Pins
@@ -15,7 +22,7 @@
 #define LCD_ENABLE_4BIT         0x02            // Enable 4bit mode
 #define LCD_FUNCTION_SET        0x28            // 4 bit mode, 1/16, 5x8 font
 #define LCD_DISPLAY_OFF         0x08            // Display off
-#define LCD_DISPLAY_ON_BLINK    0x0F            // Display on with blinking cursor
+#define LCD_DISPLAY_ON_BLINK    0x0C            // Display on with blinking cursor
 #define LCD_ENTRYMODE           0x06            // Entry mode 
 #define LCD_HOME                0x02            // Home
 #define LCD_CLEAR_DISPLAY       0x01            // Clear display
@@ -23,40 +30,37 @@
 #define LCD_BREAKLINE           0xA8            // Change cursor to start of second line
 
 //******************* Function declaration *******************//
-void wait_micro(INT8U time);                    // Does nothing for "time" microsecounds
+void wait_micro(INT16U time);                    // Does nothing for "time" microsecounds
 void pulse_enable(void);                        // Pulse the enable pin
 void lcd_write8(INT8U value);                   // Write byte command
 void lcd_write4(INT8U value);                   // Write 4bit command
 void lcd_pinsetup(void);                        // Sets up the display pins
 void lcd_write_char(INT8U value);               // Write a single character
-void wait(INT8U time);                          // Wait for "time" millisecounds
-
-// Functions to be used outside this scope.
-void lcd_init(void);                            // Initializing LCD display
-void lcd_print(INT8U string_type[]);            // Prints a string on the display
-void lcd_shift(INT8U value);                    // Shift all characters on the display to the right. (may add left shift in future edurations)
-void lcd_setcursor(INT8U value);                // Set cursor to specific position, determent by width and height of the display.
-void lcd_clear(void);                           // Clears the display
+void wait(INT16U time);                          // Wait for "time" millisecounds
 
 //******************* End of function *******************//
 
 void lcd_clear(void)
 {
     lcd_write8(LCD_CLEAR_DISPLAY);
+    wait_micro(500);
 }
 
 //******************* Set cursor *******************//
 void lcd_setcursor(INT8U width, BOOLEAN height)
 {
-    if (height)                                 // If height is 1 add a linebreak
-    {
-        width = width + 0x28;                   // add linebreak
-    }
     if (width >= LCD_DISPLAY_WIDTH)             // Make sure cursor is within borders of the display
     {
         width = 0x00;                           // If not, back to home.
     }
+    if (height)                                 // If height is 1 add a linebreak
+    {
+        width = width + 0x28;                   // add linebreak
+    }
+
+    width = width | 0x80;
     lcd_write8(width); //Set cursor
+    wait(500);
 }
 //******************* End of function *******************//
 
@@ -88,6 +92,7 @@ void lcd_print(INT8U string_type[])
         }
         wait_micro(80);
     }
+    wait(500);
 }
 //******************* End of function *******************//
 
@@ -134,7 +139,7 @@ void lcd_init(void)
     wait(500);                                  // wait 500ms
 
     lcd_write4(LCD_FUNCTIONRESET);              //First try
-    wait_micro(40000);
+    wait_micro(3000);
 
     lcd_write4(LCD_FUNCTIONRESET);              //Second try
     wait_micro(400);
@@ -159,6 +164,8 @@ void lcd_init(void)
 
     lcd_write8(LCD_HOME);                       // Home
     wait_micro(160);
+
+    lcd_clear();
 }
 //******************* End of function *******************//
 
@@ -210,14 +217,14 @@ void pulse_enable(void)
 
 // Thies funktion most be changed to software timers!!
 // Waits in microsecounds*time
-void wait_micro( INT8U time )
+void wait_micro( INT16U time )
 {
     time = 16*time;                             //80Mhz CPU
     while (time--);
 }
 
 //This function is only used when it's an estimate
-void wait (INT8U time)
+void wait (INT16U time)
 {
     time = 16000*time;                          //80Mhz CPU
     while (time--);
