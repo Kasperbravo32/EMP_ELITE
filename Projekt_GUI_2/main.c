@@ -45,9 +45,9 @@ int main(void)
     setup();
     lcd_pinsetup();
     enable_global_int();
-    lcd_GUI_startup();
 
-    schedule();
+    lcd_output();
+
     while(1)
     {
         while(!ticks);

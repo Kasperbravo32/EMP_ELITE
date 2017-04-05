@@ -24,8 +24,13 @@ static INT8U  current_state = MAIN;
 static INT8U  arrow_pos = 1;
 static INT8U LED_timer;
 static INT8U pause_dummy = 0;
-INT8U strs[2][15] = {"Puls" , "FFT"};
+INT8U strs[4][15] = {"Puls" , "FFT" , "Credits" , "Settings"};
 volatile INT64U pause_screen_timer;
+
+static INT8U line_one_char   = 0x7E;
+static INT8U line_two_char   = ' ';
+static INT8U line_three_char = ' ';
+static INT8U line_four_char  = ' ';
 
 // -----------------------------------
 //              Functions
@@ -145,59 +150,85 @@ int cases(int value)
 void lcd_move_arrow()
 {
     arrow_pos++;
-    if(arrow_pos >= 3)
+    if(arrow_pos >= 5)
         arrow_pos = 1;
-    if (arrow_pos == 1)
-    {
-        lcd_instruct(NEXT_LINE);
+
+    switch(arrow_pos) {
+    case 1:
+
+        line_one_char   = 0x7E;
+        line_two_char   = ' ';
+        line_three_char = ' ';
+        line_four_char  = ' ';
+
+        lcd_instruct(LCD_LINE_FOUR);
         lcd_data(' ');
-        lcd_instruct(0x80);
+        lcd_instruct(LCD_LINE_ONE);
         lcd_data(0x7E);
-    }
-    else if (arrow_pos == 2)
-    {
-        lcd_instruct(NEXT_LINE);
-        lcd_data(0x7E);
-        lcd_instruct(0x80);
+        break;
+
+    case 2:
+
+        line_one_char   = ' ';
+        line_two_char   = 0x7E;
+        line_three_char = ' ';
+        line_four_char  = ' ';
+
+        lcd_instruct(LCD_LINE_ONE);
         lcd_data(' ');
+        lcd_instruct(LCD_LINE_TWO);
+        lcd_data(0x7E);
+        break;
+
+    case 3:
+
+        line_one_char   = ' ';
+        line_two_char   = ' ';
+        line_three_char = 0x7E;
+        line_four_char  = ' ';
+
+        lcd_instruct(LCD_LINE_TWO);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_THREE);
+        lcd_data(0x7E);
+        break;
+
+    case 4:
+
+        line_one_char   = ' ';
+        line_two_char   = ' ';
+        line_three_char = ' ';
+        line_four_char  = 0x7E;
+
+        lcd_instruct(LCD_LINE_THREE);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_FOUR);
+        lcd_data(0x7E);
+        break;
     }
 }
 
-void lcd_output(int value , INT8U strs[2][15])
+void lcd_output()
 {
-    switch(value)
+    switch(arrow_pos)
     {
     case 1:
         lcd_instruct(LCD_CLEAR_DISPLAY);
         wait_mil(2);
-        lcd_data(0x7E);
-        lcd_data_string(strs[0]);
-        lcd_instruct(NEXT_LINE);
-        lcd_data(' ');
-        lcd_data_string(strs[1]);
-        break;
 
-    case 2:
-        lcd_instruct(LCD_CLEAR_DISPLAY);
-        wait_mil(2);
-        lcd_data(' ');
+        lcd_data(line_one_char);
         lcd_data_string(strs[0]);
-        lcd_instruct(NEXT_LINE);
-        lcd_data(0x7E);
+        lcd_instruct(LCD_LINE_TWO);
+        lcd_data(line_two_char);
         lcd_data_string(strs[1]);
+        lcd_instruct(LCD_LINE_THREE);
+        lcd_data(line_three_char);
+        lcd_data_string(strs[2]);
+        lcd_instruct(LCD_LINE_FOUR);
+        lcd_data(line_four_char);
+        lcd_data_string(strs[3]);
         break;
     }
-}
-
-void lcd_GUI_startup()
-{
-    lcd_instruct(LCD_CLEAR_DISPLAY);
-    wait_mil(2);
-    lcd_data(0x7E);
-    lcd_data_string(strs[0]);
-    lcd_instruct(NEXT_LINE);
-    lcd_data(' ');
-    lcd_data_string(strs[1]);
 }
 
 void lcd_enter()
@@ -226,22 +257,28 @@ void lcd_enter()
 
 void return_main()
 {
-    arrow_pos = 1;
     current_state = MAIN;
     lcd_instruct(LCD_CLEAR_DISPLAY);
     wait_mil(2);
-    lcd_data(0x7E);
+
+    lcd_data(line_one_char);
     lcd_data_string(strs[0]);
-    lcd_instruct(NEXT_LINE);
-    lcd_data(' ');
+    lcd_instruct(LCD_LINE_TWO);
+    lcd_data(line_two_char);
     lcd_data_string(strs[1]);
+    lcd_instruct(LCD_LINE_THREE);
+    lcd_data(line_three_char);
+    lcd_data_string(strs[2]);
+    lcd_instruct(LCD_LINE_FOUR);
+    lcd_data(line_four_char);
+    lcd_data_string(strs[3]);
+
 }
 
 void enter_puls()
 {
     lcd_instruct(LCD_CLEAR_DISPLAY);
     lcd_data_string("Func :");
-    wait_mil(100);
     lcd_data_string(" Puls");
 }
 

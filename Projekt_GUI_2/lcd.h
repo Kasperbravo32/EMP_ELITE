@@ -38,7 +38,14 @@
 #define SET_CURSOR              0x80    // Set DDRAM Adress
 #define INSTRUCT                0       // RS bit instruction mode
 #define DATA                    1       // RS bit DATA mode
+
 #define NEXT_LINE               0xC0    // Toggles start of next line
+
+#define LCD_LINE_ONE            0x80
+#define LCD_LINE_TWO            0xC0
+#define LCD_LINE_THREE          0x94
+#define LCD_LINE_FOUR           0xD4
+
 
 // ------------------------------------------
 //                 Functions

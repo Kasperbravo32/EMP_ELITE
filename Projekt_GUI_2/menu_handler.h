@@ -36,11 +36,9 @@ int cases(int value);
 
 void lcd_move_arrow();
 
-void lcd_output(int value , INT8U strs[2][15]);
+void lcd_output();
 
 void lcd_enter();
-
-void lcd_GUI_startup();
 
 void enter_puls();
 
