@@ -15,6 +15,7 @@
 #include "setup.h"
 #include "tm4c123gh6pm.h"
 #include "rtcs.h"
+//  testeleste
 
 // --------------------------------------
 //              Functions
@@ -25,11 +26,13 @@
 // --------------------------------------
 
 volatile INT8U  LED_timer;
+static   int    adcResult;
 static   INT16U alive_timer        = TIMER_500;
 static   INT8U  event              = NO_EVENT;
 static   INT8U  output             = NO_EVENT;
 static   INT64U pause_screen_timer = TIMER_1000;
 static   INT8U  pause_screen_on    = 0;
+
 
 // --------------------------------------
 //                Main
@@ -43,6 +46,7 @@ int main(void)
     init_systick();
     setup();
     lcd_pinsetup();
+    ADCsetup(SETUP_PB5);
     enable_global_int();
 
     lcd_output();
@@ -65,5 +69,15 @@ int main(void)
         }
         event  = determine_click();
         output = cases(event);
+
+        adcResult = ADC1_SSFIFO3_R;
+        ADC1_ISC_R = (1 << 3);
+
+        if (adcResult < 1300)
+            SET_LED(LED_RED);
+        else if (adcResult >= 1300 && adcResult < 2650)
+            SET_LED(LED_YELLOW);
+        else
+            SET_LED(LED_GREEN);
     }
 }
