@@ -47,7 +47,7 @@ void setup(void)
 /* --------------------------------------------
  *                   SETUP LCD
  * ------------------------------------------*/
-void lcd_pinsetup()
+void LCD_setup()
 {
     int dummy;
     // Enable the GPIO port that is used for the LCD Display.
@@ -75,7 +75,7 @@ void lcd_pinsetup()
 /* --------------------------------------------
  *           SETUP ADC, PB4 / PB5
  * ------------------------------------------*/
-void ADCsetup(int value) {
+void ADC1_setup(int value) {
 
 
     /*
@@ -133,14 +133,13 @@ void ADCsetup(int value) {
     ADC1_SSCTL3_R |= 0x6;                     // Sætter END-bit for ADC1
     ADC1_ACTSS_R |= (1 << 3);                 // Enable SS3
     ADC1_ISC_R = (1 << 3);                    // Clear interrupt flag
-
 }
 
 
 /* --------------------------------------------
  *                  SETUP µDMA
  * ------------------------------------------*/
-void DMAsetup() {
+void DMA_setup() {
 
     /*
      * Everything is set up using the Initialization and configuration guide in
@@ -150,59 +149,88 @@ void DMAsetup() {
     /* Module Initialization ----------------------------------------------------------------------- */
 
     /*
-    1. Enable the μDMA clock using the RCGCDMA register (see page 341).
+    1. Enable the μDMA clock using the RCGCDMA register (see page 341).                         µ
     */
     SYSCTL_RCGCDMA_R |= 0x1;
     /*
-    2. Enable the μDMA controller by setting the MASTEREN bit of the DMA Configuration (DMACFG)
+    2. Enable the μDMA controller by setting the MASTEREN bit of the DMA Configuration (DMACFG) µ
     register.
     */
     UDMA_CFG_R |= 0x1;
 
     /*
     3. Program the location of the channel control table by writing the base address of the table to the
-    DMA Channel Control Base Pointer (DMACTLBASE) register. The base address must be
+    DMA Channel Control Base Pointer (DMACTLBASE) register. The base address must be            µ
     aligned on a 1024-byte boundary.
     */
+    //UDMA_CTLBASE_R |= (ARRAY << 10);          Create array somewhere, to be fed enough
 
-    //UDMA_CTLBASE_R |= (ARRAY << 10);
+
+
+
 
     /* Configure the Channel Attributes ------------------------------------------------------------ */
 
-    /*
-    1. Program bit 30 of the DMA Channel Priority Set (DMAPRIOSET) or DMA Channel Priority
+    /*    Channel 30 is optimized for software-initiated transfer (ours), so that channel will be used.
+     *
+    1. Program bit 30 of the DMA Channel Priority Set (DMAPRIOSET) or DMA Channel Priority      µ
     Clear (DMAPRIOCLR) registers to set the channel to High priority or Default priority. */
-
+    UDMA_PRIOCLR_R = 0xFFFF;                // Clears priority of ALL channels, as a safety
+    wait2_mil(1);
+    UDMA_PRIOSET_R = 0x4000;                // Sets priority of channel 30 to high, above all others
     /*
-    2. Set bit 30 of the DMA Channel Primary Alternate Clear (DMAALTCLR) register to select the
+     *
+    2. Set bit 30 of the DMA Channel Primary Alternate Clear (DMAALTCLR) register to select the µ
     primary channel control structure for this transfer.*/
 
-    /*
-    3. Set bit 30 of the DMA Channel Useburst Clear (DMAUSEBURSTCLR) register to allow the
-    μDMA controller to respond to single and burst requests.*/
+    UDMA_ALTCLR_R = 0x4000;
 
     /*
-    4. Set bit 30 of the DMA Channel Request Mask Clear (DMAREQMASKCLR) register to allow
+    3. Set bit 30 of the DMA Channel Useburst Clear (DMAUSEBURSTCLR) register to allow the      µ
+    μDMA controller to respond to single and burst requests.*/
+
+    UDMA_USEBURSTCLR_R = 0x4000;
+
+    /*
+    4. Set bit 30 of the DMA Channel Request Mask Clear (DMAREQMASKCLR) register to allow       µ
     the μDMA controller to recognize requests for this channel.*/
+
+    UDMA_REQMASKCLR_R = 0x4000;
+
+
 
     /* Configure the Channel Control Structure ----------------------------------------------------- */
 
     /*
     1. Program the source end pointer at offset 0x1E0 to the address of the source buffer + 0x3FC.*/
 
+
     /*
     2. Program the destination end pointer at offset 0x1E4 to the address of the destination buffer +
     0x3FC.*/
 
 
+
+
+
+
     /* Start the Transfer -------------------------------------------------------------------------- */
 
     /*
-    1. Enable the channel by setting bit 30 of the DMA Channel Enable Set (DMAENASET) register.*/
+    1. Enable the channel by setting bit 30 of the DMA Channel Enable Set (DMAENASET) register.     µ
+    */
+
+    UDMA_ENASET_R = 0x4000;
 
     /*
-    2. Issue a transfer request by setting bit 30 of the DMA Channel Software Request (DMASWREQ)
+    2. Issue a transfer request by setting bit 30 of the DMA Channel Software Request (DMASWREQ)    µ
     register.*/
+
+    UDMA_SWREQ_R = 0x4000;
+
+
+
+
 
 
     /* Configure the Channel Attributes ------------------------------------------------------------ */
@@ -223,4 +251,13 @@ void DMAsetup() {
     4. Set bit 7 of the DMA Channel Request Mask Clear (DMAREQMASKCLR) register to allow
     the μDMA controller to recognize requests for this channel.*/
 
+}
+
+
+
+
+void wait2_mil (int time)
+{
+    time = 16000*time;
+    while (time--);
 }

@@ -34,13 +34,17 @@
 
 int cases(int value);
 
+int ADC_collect();
+
+int ADC1();
+
 void lcd_move_arrow();
 
 void lcd_output();
 
 void lcd_enter();
 
-void enter_puls();
+void enter_pulse();
 
 void enter_FFT();
 
@@ -49,5 +53,6 @@ void enter_credits();
 void enter_settings();
 
 void pause_screen();
+
 
 #endif /* MENU_HANDLER_H_ */

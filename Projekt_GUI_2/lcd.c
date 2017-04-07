@@ -21,31 +21,31 @@ void lcd_init(void)
     GPIO_PORTC_DATA_R &= ~(0xF0);       //slukker alle data porte
     GPIO_PORTD_DATA_R &= ~(0x0C);       //slukker RS og Enable
 
-    wait_mil(500);                         // wait 500ms
+    wait_mil(500);                          // wait 500ms
 
-    lcd_write4(LCD_FUNCTIONRESET);      //First try
+    lcd_write4(LCD_FUNCTIONRESET);          //First try
     wait_micro(40000);
 
-    lcd_write4(LCD_FUNCTIONRESET);      //Second try
+    lcd_write4(LCD_FUNCTIONRESET);          //Second try
     wait_micro(400);
 
-    lcd_write4(LCD_FUNCTIONRESET);      //Third and lucky try
+    lcd_write4(LCD_FUNCTIONRESET);          //Third and lucky try
     wait_micro(400);
 
-    lcd_write4(LCD_ENABLE_4BIT);        //Enable 4bit mode
+    lcd_write4(LCD_ENABLE_4BIT);            //Enable 4bit mode
     wait_micro(160);
 
     //lcd_write8(0x2C);
-    /*//*/lcd_write8(LCD_FUNCTION_SET);       //4 bit mode, 1/16, 5x8 font
+    /*//*/lcd_write8(LCD_FUNCTION_SET);     //4 bit mode, 1/16, 5x8 font
     wait_micro(160);
 
-    lcd_write8(LCD_DISPLAY_OFF);        // Display off
+    lcd_write8(LCD_DISPLAY_OFF);            // Display off
     wait_micro(160);
 
-    lcd_write8(LCD_DISPLAY_ON);   // Display on with blinking cursor
+    lcd_write8(LCD_DISPLAY_ON);             // Display on with blinking cursor
     wait_micro(160);
 
-    lcd_write8(LCD_ENTRYMODE);          // Entry mode
+    lcd_write8(LCD_ENTRYMODE);              // Entry mode
     wait_micro(160);
 
     lcd_write8(LCD_HOME);                   // Home

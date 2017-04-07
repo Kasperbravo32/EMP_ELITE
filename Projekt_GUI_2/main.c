@@ -15,7 +15,6 @@
 #include "setup.h"
 #include "tm4c123gh6pm.h"
 #include "rtcs.h"
-//  testeleste
 
 // --------------------------------------
 //              Functions
@@ -25,8 +24,7 @@
 //              Variables
 // --------------------------------------
 
-volatile INT8U  LED_timer;
-static   int    adcResult;
+volatile INT64U  LED_timer         = TIMER_1000;
 static   INT16U alive_timer        = TIMER_500;
 static   INT8U  event              = NO_EVENT;
 static   INT8U  output             = NO_EVENT;
@@ -45,10 +43,12 @@ int main(void)
     disable_global_int();
     init_systick();
     setup();
-    lcd_pinsetup();
+    LCD_setup();
 
-    ADCsetup(SETUP_PB5);
-    DMAsetup();
+
+    ADC1_setup(SETUP_PB4);
+    DMA_setup();
+
     enable_global_int();
     lcd_output();
 
@@ -56,24 +56,32 @@ int main(void)
     {
         while(!ticks);
         ticks--;
+
         if(! --alive_timer)
         {
             alive_timer = TIMER_500;
             GPIO_PORTD_DATA_R ^= 0x40;
         }
+
         if(! -- LED_timer)
+        {
+            LED_timer = TIMER_500;
             SET_LED(!(LED_RED | LED_YELLOW | LED_GREEN));
+        }
+
         if(! --pause_screen_timer && pause_screen_on == 1)
         {
             pause_screen();
             pause_screen_timer = TIMER_5000;
         }
+
         event  = determine_click();
         output = cases(event);
+                 ADC_collect();
 
-        adcResult = ADC1_SSFIFO3_R;
-        ADC1_ISC_R = (1 << 3);
 
+
+        /*
         if (adcResult < 1300)
             SET_LED(LED_RED);
         else if (adcResult >= 1300 && adcResult < 2650)
@@ -82,5 +90,6 @@ int main(void)
             SET_LED(LED_GREEN);
         else
             SET_LED(!LED_RED);
+        */
     }
 }

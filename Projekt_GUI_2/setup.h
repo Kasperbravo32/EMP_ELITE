@@ -34,7 +34,7 @@ void setup(void);
 /* --------------------------------------------
  *               SETUP LCD
  * ------------------------------------------*/
-void lcd_pinsetup();
+void LCD_setup();
 /*
  * Sets up GPIO ports for the LCD
  */
@@ -43,7 +43,7 @@ void lcd_pinsetup();
 /* --------------------------------------------
  *           SETUP ADC, PB4 / PB5
  * ------------------------------------------*/
-void ADCsetup(int value);
+void ADC1_setup(int value);
 /*
  * Setup ADC og Port
  * Port B, Pin 4
@@ -61,8 +61,20 @@ void ADCsetup(int value);
 /* --------------------------------------------
  *                  SETUP µDMA
  * ------------------------------------------*/
-void DMAsetup();
+void DMA_setup();
 /*
  * Sets up the µDMA to work with the ADC
+ */
+
+
+
+
+
+/* --------------------------------------------
+ *                  Wait
+ * ------------------------------------------*/
+void wait2_mil (int time);
+/*
+ * waits 'time' milliseconds, roughly. used between register operations
  */
 #endif /* SETUP_H_ */
