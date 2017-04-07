@@ -72,8 +72,76 @@ void LCD_setup()
     // And the same thing for the RS and enable LCD pin
 }
 
+
 /* --------------------------------------------
- *           SETUP ADC, PB4 / PB5
+ *           SETUP ADC0, PB4 / PB5
+ * ------------------------------------------*/
+
+void ADC0_setup(int value)
+{
+    /*
+     * Setup ADC0 og Port B
+     * Port B, Pin 4 / Pin 5
+     * ADC0
+     * Sample Sequencer 3
+     * FIFO = 1
+     * PB4/5 = Input
+     *
+    */
+    SYSCTL_RCGCADC_R = 0x1;                                             // Vælger ADC0 Run-Mode Clock Gating Control
+    SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB;                               // Sætter Port B til GPIO
+
+    /*
+     * Sætter PB4 eller PB5 til input
+     */
+    if      (value == SETUP_PB4)    GPIO_PORTB_DIR_R &= ~(0x10);        // PB4
+    else if (value == SETUP_PB5)    GPIO_PORTB_DIR_R &= ~(0x20);        // PB5
+
+    /*
+     * Enabler Alternate Function på PB4 eller PB5
+     */
+    if      (value == SETUP_PB4)    GPIO_PORTB_AFSEL_R = 0x10;          // PB4
+    else if (value == SETUP_PB5)    GPIO_PORTB_AFSEL_R = 0x20;          // PB5
+
+    /*
+     * Sætter PB4 eller PB5 til digital function
+     */
+    if      (value == SETUP_PB4)    GPIO_PORTB_DEN_R |= 0x10;           // PB4
+    else if (value == SETUP_PB5)    GPIO_PORTB_DEN_R |= 0x20;           // PB5
+
+    /*
+     * Disable analog isolation på 0x10 (PB4) eller 0x20 (PB5)
+     */
+    if      (value == SETUP_PB4)    GPIO_PORTB_AMSEL_R = 0x10;          // PB4
+    else if (value == SETUP_PB5)    GPIO_PORTB_AMSEL_R = 0x20;          // PB5
+
+    /*
+     * Setup Sample Sequencer
+     * Sample Sequencer 3
+     * FIFO = 1
+     * PB4 = AIN10
+     * PB5 = AIN11 (Ikke sat op, men ledig)
+     *
+     */
+    ADC0_ACTSS_R &= ~(1 << 3);                                          // Disable SS3 før setup
+    ADC0_EMUX_R = (0xF << 12);                                          // Vælg trigger-event (12 == continuous sampling)
+
+    /*
+     * Sætter AIN10 (PB4) eller AIN11 (PB5) som analog input til SS3, ADC1
+     */
+    if      (value == SETUP_PB4)    ADC0_SSMUX3_R = 10;                 // PB4
+    else if (value == SETUP_PB5)    ADC0_SSMUX3_R = 11;                 // PB5
+
+    ADC0_SSCTL3_R |= 0x6;                     // Sætter END-bit for ADC1
+    ADC0_ACTSS_R |= (1 << 3);                 // Enable SS3
+    ADC0_ISC_R = (1 << 3);                    // Clear interrupt flag
+}
+
+
+
+
+/* --------------------------------------------
+ *           SETUP ADC1, PB4 / PB5
  * ------------------------------------------*/
 void ADC1_setup(int value) {
 
@@ -83,7 +151,6 @@ void ADC1_setup(int value) {
      * Port B, Pin 4
      * ADC1
      * PB4 = Input
-     * Clock = 16MHz (standard)
      *
      */
     SYSCTL_RCGCADC_R = 0x2;                                             // Vælger ADC1 Run-Mode Clock Gating Control
@@ -134,6 +201,8 @@ void ADC1_setup(int value) {
     ADC1_ACTSS_R |= (1 << 3);                 // Enable SS3
     ADC1_ISC_R = (1 << 3);                    // Clear interrupt flag
 }
+
+
 
 
 /* --------------------------------------------

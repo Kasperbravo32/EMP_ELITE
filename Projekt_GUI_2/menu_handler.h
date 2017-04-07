@@ -36,6 +36,8 @@ int cases(int value);
 
 int ADC_collect();
 
+//int ADC0();
+
 int ADC1();
 
 void lcd_move_arrow();
@@ -53,6 +55,8 @@ void enter_credits();
 void enter_settings();
 
 void pause_screen();
+
+void return_main();
 
 
 #endif /* MENU_HANDLER_H_ */

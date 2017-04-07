@@ -40,8 +40,28 @@ void LCD_setup();
  */
 
 
+
 /* --------------------------------------------
- *           SETUP ADC, PB4 / PB5
+ *           SETUP ADC0, PB4 / PB5
+ * ------------------------------------------*/
+void ADC0_setup(int value);
+/*
+ * Setup ADC og Port
+ * Port B, Pin 4
+ * ADC0
+ * PB4 = Input
+ *
+ * Setup Sample Sequencer
+ * Sample Sequencer 3
+ * FIFO = 1
+ * PB4 = AIN10
+ * PB5 = AIN11
+ */
+
+
+
+/* --------------------------------------------
+ *           SETUP ADC1, PB4 / PB5
  * ------------------------------------------*/
 void ADC1_setup(int value);
 /*
@@ -49,13 +69,12 @@ void ADC1_setup(int value);
  * Port B, Pin 4
  * ADC1
  * PB4 = Input
- * Clock = 16MHz (standard)
  *
  * Setup Sample Sequencer
  * Sample Sequencer 3
  * FIFO = 1
  * PB4 = AIN10
- * PB5 = AIN11 (Ikke sat op, men ledig)
+ * PB5 = AIN11
  */
 
 /* --------------------------------------------

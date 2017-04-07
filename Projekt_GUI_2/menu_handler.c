@@ -28,19 +28,18 @@ static int    ADC1_result;
 static int    pulse_triggered     = 0;
 static int    pulse_counter_60    = 0;
 static int    pulse_counter       = 0;
-static INT8U  update_state_timer  = TIMER_5000;
 static int    current_state       = MAIN;
-static INT8U  pulse_string[3]     = "000";
-static INT8U  pulse_timer         = TIMER_1000;
-static INT8U  enter_pulse_timer   = TIMER_1000;
 
 static INT8U  arrow_pos           = 1;
 static INT8U  pause_dummy         = 0;
+static INT8U  pulse_string[3]     =  "000";
 static INT8U  strs[4][15]         = {"Puls" , "FFT" , "Credits" , "Settings"};
 static INT8U  line_one_char       = 0x7E;
 static INT8U  line_two_char       = ' ';
 static INT8U  line_three_char     = ' ';
 static INT8U  line_four_char      = ' ';
+
+static INT64U update_state_timer  = TIMER_4000;
 static INT64U LED_timer           = TIMER_1000;
 
 // -----------------------------------
@@ -55,7 +54,7 @@ int cases(int value)
 
         if (! --update_state_timer)
         {
-            update_state_timer == TIMER_3000;
+            update_state_timer = TIMER_4000;
             if (current_state == MAIN)
             {
                 SET_LED(LED_RED);
@@ -94,6 +93,7 @@ int cases(int value)
         SET_LED(LED_RED);
         LED_timer = TIMER_1000;
         pause_screen_timer = TIMER_60000;
+
         if (current_state == MAIN)
         {
             lcd_move_arrow();
@@ -422,6 +422,10 @@ void pause_screen()
 
 int ADC_collect()
 {
+    /*
+    ADC0_result = ADC0_SSFIFO3_R;
+    ADC0_ISC_R = (1 << 3);
+    */
 
     ADC1_result = ADC1_SSFIFO3_R;
     ADC1_ISC_R = (1 << 3);
@@ -432,10 +436,15 @@ int ADC_collect()
 
 }
 
+/*
+ADC0()
+{
+
+}
+*/
 
 
-
-ADC1()
+int ADC1()
 {
     if (ADC1_result > 3100 && pulse_triggered == 0) {                   // Hvis input er over ~2.5 volt OG der har været en down-slope, -
         pulse_counter++;                                                // for at forhindre flere puls slag på ét slag.
