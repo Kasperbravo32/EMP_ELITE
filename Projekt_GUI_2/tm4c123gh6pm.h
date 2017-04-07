@@ -9461,7 +9461,7 @@
 #define SYSCTL_DC3_CCP2         0x04000000  // CCP2 Pin Present
 #define SYSCTL_DC3_CCP1         0x02000000  // CCP1 Pin Present
 #define SYSCTL_DC3_CCP0         0x01000000  // CCP0 Pin Present
-#define SYSCTL_DC3_ADC0AIN7     0x00800000  // ADC Module 0 AIN7 Pin Present
+#define SYSCTL_DC3_0AIN7     0x00800000  // ADC Module 0 AIN7 Pin Present
 #define SYSCTL_DC3_ADC0AIN6     0x00400000  // ADC Module 0 AIN6 Pin Present
 #define SYSCTL_DC3_ADC0AIN5     0x00200000  // ADC Module 0 AIN5 Pin Present
 #define SYSCTL_DC3_ADC0AIN4     0x00100000  // ADC Module 0 AIN4 Pin Present

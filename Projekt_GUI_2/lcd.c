@@ -12,34 +12,6 @@
 #include "emp_type.h"
 #include "tm4c123gh6pm.h"
 
-void lcd_pinsetup()
-{
-    int dummy;
-    // Enable the GPIO port that is used for the LCD Display.
-    SYSCTL_RCGC2_R |= (SYSCTL_RCGC2_GPIOC | SYSCTL_RCGC2_GPIOD | SYSCTL_RCGC2_GPIOF) ;
-
-    // Do a dummy read to insert a few cycles after enabling the peripheral.
-    dummy = SYSCTL_RCGC2_R;
-
-    GPIO_PORTC_LOCK_R = 0x4C4F434B;  // Unlock the CR register
-    GPIO_PORTD_LOCK_R = 0x4C4F434B;  // Unlock the CR register
-    GPIO_PORTF_LOCK_R = 0x4C4F434B;  // Unlock the CR register
-
-    GPIO_PORTC_CR_R   = 0xFF;        // Enable overwrite of PUR to FP0
-    GPIO_PORTD_CR_R   = 0xFF;        // Enable overwrite of PUR to FP0
-    GPIO_PORTF_CR_R   = 0xFF;        // Enable overwrite of PUR to FP0
-
-    // Set port direction for the LCD display (all outputs).
-    GPIO_PORTC_DIR_R |= 0xF0;
-    GPIO_PORTD_DIR_R |= 0x0C;
-    GPIO_PORTF_DIR_R |= 0x0E;
-
-    // Enable the digital function of the GPIO pins for the LCD display.
-    GPIO_PORTC_DEN_R |= 0xF0;
-    GPIO_PORTD_DEN_R |= 0x0C;
-    GPIO_PORTF_DEN_R |= 0x0E;
-    // And the same thing for the RS and enable LCD pin
-}
 
 void lcd_init(void)
 {

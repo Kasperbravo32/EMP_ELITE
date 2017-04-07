@@ -141,6 +141,28 @@ int cases(int value)
         }
         break;
 
+    case SW2_SINGLE:
+        SET_LED(LED_RED);
+        LED_timer = TIMER_1000;
+        lcd_move_arrow();
+        return arrow_pos;
+
+        break;
+
+    case SW2_DOUBLE:
+        SET_LED(LED_RED | LED_YELLOW);
+        LED_timer = TIMER_1000;
+        lcd_move_arrow();
+        return arrow_pos;
+        break;
+
+    case SW2_LONG:
+        SET_LED(LED_RED | LED_YELLOW | LED_GREEN);
+        LED_timer = TIMER_1000;
+        lcd_move_arrow();
+        return arrow_pos;
+        break;
+
     default:
         return 0;
         break;

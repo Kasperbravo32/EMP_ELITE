@@ -46,9 +46,10 @@ int main(void)
     init_systick();
     setup();
     lcd_pinsetup();
-    ADCsetup(SETUP_PB5);
-    enable_global_int();
 
+    ADCsetup(SETUP_PB5);
+    DMAsetup();
+    enable_global_int();
     lcd_output();
 
     while(1)
@@ -77,7 +78,9 @@ int main(void)
             SET_LED(LED_RED);
         else if (adcResult >= 1300 && adcResult < 2650)
             SET_LED(LED_YELLOW);
-        else
+        else if (adcResult >= 2650 && adcResult < 3700)
             SET_LED(LED_GREEN);
+        else
+            SET_LED(!LED_RED);
     }
 }

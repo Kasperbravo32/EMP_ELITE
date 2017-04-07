@@ -17,6 +17,10 @@
 // --------------------------------------------
 //                  Functions
 // --------------------------------------------
+
+/* --------------------------------------------
+ *                  SETUP PF&PD
+ * ------------------------------------------*/
 void setup(void);
 /* Sætter PF 1, 2, 3 som output
  * Sætter PD 6 som output
@@ -27,8 +31,18 @@ void setup(void);
  */
 
 
+/* --------------------------------------------
+ *               SETUP LCD
+ * ------------------------------------------*/
+void lcd_pinsetup();
+/*
+ * Sets up GPIO ports for the LCD
+ */
 
 
+/* --------------------------------------------
+ *           SETUP ADC, PB4 / PB5
+ * ------------------------------------------*/
 void ADCsetup(int value);
 /*
  * Setup ADC og Port
@@ -44,4 +58,11 @@ void ADCsetup(int value);
  * PB5 = AIN11 (Ikke sat op, men ledig)
  */
 
+/* --------------------------------------------
+ *                  SETUP µDMA
+ * ------------------------------------------*/
+void DMAsetup();
+/*
+ * Sets up the µDMA to work with the ADC
+ */
 #endif /* SETUP_H_ */
