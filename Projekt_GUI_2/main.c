@@ -24,10 +24,9 @@
 //              Variables
 // --------------------------------------
 
-volatile INT64U  LED_timer         = TIMER_1000;
+volatile INT64U LED_timer          = TIMER_1000;
 static   INT16U alive_timer        = TIMER_500;
 static   INT8U  event              = NO_EVENT;
-static   INT8U  output             = NO_EVENT;
 static   INT64U pause_screen_timer = TIMER_1000;
 static   INT8U  pause_screen_on    = 0;
 
@@ -41,46 +40,38 @@ extern INT16S ticks;
 int main(void)
 {
     disable_global_int();
+
     init_systick();
-    setup();
+    gpio_setup();
     LCD_setup();
-
-
     ADC1_setup(SETUP_PB4);
     DMA_setup();
 
     enable_global_int();
-    lcd_output();
+    lcd_menu();
 
     while(1)
     {
         while(!ticks);
         ticks--;
-
         if(! --alive_timer)
         {
             alive_timer = TIMER_500;
             GPIO_PORTD_DATA_R ^= 0x40;
         }
-
         if(! -- LED_timer)
         {
             LED_timer = TIMER_500;
             SET_LED(!(LED_RED | LED_YELLOW | LED_GREEN));
         }
-
         if(! --pause_screen_timer && pause_screen_on == 1)
         {
             pause_screen();
             pause_screen_timer = TIMER_5000;
         }
-
         event  = determine_click();
-        output = cases(event);
+                 handle_click(event);
                  ADC_collect();
-
-
-
         /*
         if (adcResult < 1300)
             SET_LED(LED_RED);

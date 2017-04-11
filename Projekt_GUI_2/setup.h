@@ -21,7 +21,7 @@
 /* --------------------------------------------
  *                  SETUP PF&PD
  * ------------------------------------------*/
-void setup(void);
+void gpio_setup(void);
 /* Sætter PF 1, 2, 3 som output
  * Sætter PD 6 som output
  *

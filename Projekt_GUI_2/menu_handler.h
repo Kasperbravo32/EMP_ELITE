@@ -32,31 +32,46 @@
 //              Functions
 // -----------------------------------
 
-int cases(int value);
+//
+void handle_click(int value);
 
-int ADC_collect();
+//gets the data from the ADC's
+void ADC_collect();
 
-//int ADC0();
+//processes data from ADC0
+//void ADC0();
 
-int ADC1();
+//processes data from ADC1
+void ADC1();
 
-void lcd_move_arrow();
+//moves the arrow/cursor down on the menu
+void lcd_move_arrow_down();
 
-void lcd_output();
+//moves the arrow/cursor up on the menu
+void lcd_move_arrow_up();
 
+//outputs the main menu on the LCD display
+void lcd_menu();
+
+//enters the function that the arrow points to
 void lcd_enter();
 
+//enters the pulse function
 void enter_pulse();
 
+//enters the Fast Fourier Transform function
 void enter_FFT();
 
+//enters the credits function
 void enter_credits();
 
+//enters the settings function
 void enter_settings();
 
+//shows the pause screen on the LCD display
 void pause_screen();
 
-void return_main();
-
+//returns to the main menu
+void return_menu();
 
 #endif /* MENU_HANDLER_H_ */

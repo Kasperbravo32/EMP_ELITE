@@ -9,17 +9,14 @@
 #include "emp_type.h"
 #include "setup.h"
 
-
-
 /* --------------------------------------------
  *                  SETUP PF&PD
  * ------------------------------------------*/
-void setup(void)
+void gpio_setup(void)
 {
     int dummy;
     // Enable the GPIO port that is used for the on-board LED.
     SYSCTL_RCGC2_R = SYSCTL_RCGC2_GPIOD | SYSCTL_RCGC2_GPIOF;
-
 
     // Do a dummy read to insert a few cycles after enabling the peripheral.
     dummy = SYSCTL_RCGC2_R;
@@ -80,7 +77,7 @@ void LCD_setup()
 void ADC0_setup(int value)
 {
     /*
-     * Setup ADC0 og Port B
+     * Setup ADC0 and Port B
      * Port B, Pin 4 / Pin 5
      * ADC0
      * Sample Sequencer 3
@@ -88,29 +85,29 @@ void ADC0_setup(int value)
      * PB4/5 = Input
      *
     */
-    SYSCTL_RCGCADC_R = 0x1;                                             // Vælger ADC0 Run-Mode Clock Gating Control
-    SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB;                               // Sætter Port B til GPIO
+    SYSCTL_RCGCADC_R = 0x1;                                             // Sets ADC0 Run-Mode Clock Gating Control
+    SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB;                               // Sets Port B to GPIO
 
     /*
-     * Sætter PB4 eller PB5 til input
+     * sets PB4 or PB5 as input
      */
     if      (value == SETUP_PB4)    GPIO_PORTB_DIR_R &= ~(0x10);        // PB4
     else if (value == SETUP_PB5)    GPIO_PORTB_DIR_R &= ~(0x20);        // PB5
 
     /*
-     * Enabler Alternate Function på PB4 eller PB5
+     * Enables Alternate Function on PB4 or PB5
      */
     if      (value == SETUP_PB4)    GPIO_PORTB_AFSEL_R = 0x10;          // PB4
     else if (value == SETUP_PB5)    GPIO_PORTB_AFSEL_R = 0x20;          // PB5
 
     /*
-     * Sætter PB4 eller PB5 til digital function
+     * sets PB4 or PB5 to digital function
      */
     if      (value == SETUP_PB4)    GPIO_PORTB_DEN_R |= 0x10;           // PB4
     else if (value == SETUP_PB5)    GPIO_PORTB_DEN_R |= 0x20;           // PB5
 
     /*
-     * Disable analog isolation på 0x10 (PB4) eller 0x20 (PB5)
+     * Disable analog isolation on 0x10 (PB4) or 0x20 (PB5)
      */
     if      (value == SETUP_PB4)    GPIO_PORTB_AMSEL_R = 0x10;          // PB4
     else if (value == SETUP_PB5)    GPIO_PORTB_AMSEL_R = 0x20;          // PB5
@@ -123,59 +120,55 @@ void ADC0_setup(int value)
      * PB5 = AIN11 (Ikke sat op, men ledig)
      *
      */
-    ADC0_ACTSS_R &= ~(1 << 3);                                          // Disable SS3 før setup
-    ADC0_EMUX_R = (0xF << 12);                                          // Vælg trigger-event (12 == continuous sampling)
+    ADC0_ACTSS_R &= ~(1 << 3);                                          // Disable SS3 for setup
+    ADC0_EMUX_R = (0xF << 12);                                          // Sets trigger-event (12 == continuous sampling)
 
     /*
-     * Sætter AIN10 (PB4) eller AIN11 (PB5) som analog input til SS3, ADC1
+     * sets AIN10 (PB4) or AIN11 (PB5) as analog input to SS3, ADC1
      */
     if      (value == SETUP_PB4)    ADC0_SSMUX3_R = 10;                 // PB4
     else if (value == SETUP_PB5)    ADC0_SSMUX3_R = 11;                 // PB5
 
-    ADC0_SSCTL3_R |= 0x6;                     // Sætter END-bit for ADC1
+    ADC0_SSCTL3_R |= 0x6;                     // Sets END-bit for ADC1
     ADC0_ACTSS_R |= (1 << 3);                 // Enable SS3
     ADC0_ISC_R = (1 << 3);                    // Clear interrupt flag
 }
 
-
-
-
 /* --------------------------------------------
  *           SETUP ADC1, PB4 / PB5
  * ------------------------------------------*/
-void ADC1_setup(int value) {
-
-
+void ADC1_setup(int value)
+{
     /*
-     * Setup ADC og Port
+     * Setup ADC and Port
      * Port B, Pin 4
      * ADC1
      * PB4 = Input
      *
      */
-    SYSCTL_RCGCADC_R = 0x2;                                             // Vælger ADC1 Run-Mode Clock Gating Control
-    SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB;                               // Sætter Port B til GPIO
+    SYSCTL_RCGCADC_R = 0x2;                                             // Sets ADC1 Run-Mode Clock Gating Control
+    SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB;                               // Sets Port B to GPIO
 
     /*
-     * Sætter PB4 eller PB5 til input
+     * Sets PB4 or PB5 as input
      */
     if      (value == SETUP_PB4)    GPIO_PORTB_DIR_R &= ~(0x10);        // PB4
     else if (value == SETUP_PB5)    GPIO_PORTB_DIR_R &= ~(0x20);        // PB5
 
     /*
-     * Enabler Alternate Function på PB4 eller PB5
+     * Enables Alternate Function on PB4 or PB5
      */
     if      (value == SETUP_PB4)    GPIO_PORTB_AFSEL_R = 0x10;          // PB4
     else if (value == SETUP_PB5)    GPIO_PORTB_AFSEL_R = 0x20;          // PB5
 
     /*
-     * Sætter PB4 eller PB5 til digital function
+     * Sets PB4 or PB5 to digital function
      */
     if      (value == SETUP_PB4)    GPIO_PORTB_DEN_R |= 0x10;           // PB4
     else if (value == SETUP_PB5)    GPIO_PORTB_DEN_R |= 0x20;           // PB5
 
     /*
-     * Disable analog isolation på 0x10 (PB4) eller 0x20 (PB5)
+     * Disable analog isolation on 0x10 (PB4) or 0x20 (PB5)
      */
     if      (value == SETUP_PB4)    GPIO_PORTB_AMSEL_R = 0x10;          // PB4
     else if (value == SETUP_PB5)    GPIO_PORTB_AMSEL_R = 0x20;          // PB5
@@ -189,27 +182,24 @@ void ADC1_setup(int value) {
      *
      */
     ADC1_ACTSS_R &= ~(1 << 3);                                          // Disable SS3 før setup
-    ADC1_EMUX_R = (0xF << 12);                                          // Vælg trigger-event (12 == continuous sampling)
+    ADC1_EMUX_R = (0xF << 12);                                          // Set trigger-event (12 == continuous sampling)
 
     /*
-     * Sætter AIN10 (PB4) eller AIN11 (PB5) som analog input til SS3, ADC1
+     * Sets AIN10 (PB4) or AIN11 (PB5) as analog input to SS3, ADC1
      */
     if      (value == SETUP_PB4)    ADC1_SSMUX3_R = 10;                 // PB4
     else if (value == SETUP_PB5)    ADC1_SSMUX3_R = 11;                 // PB5
 
-    ADC1_SSCTL3_R |= 0x6;                     // Sætter END-bit for ADC1
+    ADC1_SSCTL3_R |= 0x6;                     // Sets END-bit for ADC1
     ADC1_ACTSS_R |= (1 << 3);                 // Enable SS3
     ADC1_ISC_R = (1 << 3);                    // Clear interrupt flag
 }
 
-
-
-
 /* --------------------------------------------
- *                  SETUP µDMA
+ *                  SETUP �DMA
  * ------------------------------------------*/
-void DMA_setup() {
-
+void DMA_setup()
+{
     /*
      * Everything is set up using the Initialization and configuration guide in
      * "tm4c123gh6pm.pdf", page 599 - 603, + some additional pages for Register configurations
@@ -218,11 +208,11 @@ void DMA_setup() {
     /* Module Initialization ----------------------------------------------------------------------- */
 
     /*
-    1. Enable the μDMA clock using the RCGCDMA register (see page 341).                         µ
+    1. Enable the �DMA clock using the RCGCDMA register (see page 341).                         µ
     */
     SYSCTL_RCGCDMA_R |= 0x1;
     /*
-    2. Enable the μDMA controller by setting the MASTEREN bit of the DMA Configuration (DMACFG) µ
+    2. Enable the �DMA controller by setting the MASTEREN bit of the DMA Configuration (DMACFG) µ
     register.
     */
     UDMA_CFG_R |= 0x1;
@@ -233,8 +223,6 @@ void DMA_setup() {
     aligned on a 1024-byte boundary.
     */
     //UDMA_CTLBASE_R |= (ARRAY << 10);          Create array somewhere, to be fed enough
-
-
 
 
 
@@ -267,7 +255,6 @@ void DMA_setup() {
     UDMA_REQMASKCLR_R = 0x4000;
 
 
-
     /* Configure the Channel Control Structure ----------------------------------------------------- */
 
     /*
@@ -277,9 +264,6 @@ void DMA_setup() {
     /*
     2. Program the destination end pointer at offset 0x1E4 to the address of the destination buffer +
     0x3FC.*/
-
-
-
 
 
 
@@ -296,10 +280,6 @@ void DMA_setup() {
     register.*/
 
     UDMA_SWREQ_R = 0x4000;
-
-
-
-
 
 
     /* Configure the Channel Attributes ------------------------------------------------------------ */
@@ -319,13 +299,9 @@ void DMA_setup() {
     /*
     4. Set bit 7 of the DMA Channel Request Mask Clear (DMAREQMASKCLR) register to allow
     the μDMA controller to recognize requests for this channel.*/
-
 }
 
-
-
-
-void wait2_mil (int time)
+void wait2_mil(int time)
 {
     time = 16000*time;
     while (time--);

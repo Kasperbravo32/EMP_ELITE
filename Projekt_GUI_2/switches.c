@@ -136,7 +136,7 @@ INT8U determine_click()                                                         
             if(! sw2_clicked())
             {
                 sw2_state = FIRST_RELEASE;
-                button_timer = TIMER_100;
+                button_timer = TIMER_200;
             }
         }
         break;
@@ -152,7 +152,7 @@ INT8U determine_click()                                                         
             if(sw2_clicked())
             {
                 sw2_state = SECOND_PUSH;
-                button_timer = TIMER_2000;
+                button_timer = TIMER_1500;
             }
         }
         break;
