@@ -73,10 +73,10 @@ void lcd_data(int value);
 
 void lcd_instuct(int value);
 
-//int lcd_data_string(char str[])
+//int lcd_data_string(char str[]);
 
-int RS_flip(int value);
+void RS_flip(int value);
 
-int E_FLIP(int value);
+void E_FLIP(int value);
 
 #endif /* LCD_H_ */

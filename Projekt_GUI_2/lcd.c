@@ -15,11 +15,11 @@
 
 void lcd_init(void)
 {
-    // This part is nessesary beacouse we are working with 3.3V logic and power and not 5V
+    // This part is necessary because we are working with 3.3V logic and power and not 5V
     // The reset circuit only works when Vcc is above 4.5V
-    // Need to implement som timing, cause of the slow access times on the LCD
-    GPIO_PORTC_DATA_R &= ~(0xF0);       //slukker alle data porte
-    GPIO_PORTD_DATA_R &= ~(0x0C);       //slukker RS og Enable
+    // Need to implement some timing, cause of the slow access times on the LCD
+    GPIO_PORTC_DATA_R &= ~(0xF0);       //disables all data ports
+    GPIO_PORTD_DATA_R &= ~(0x0C);       //disables RS and Enable
 
     wait_mil(500);                          // wait 500ms
 
@@ -143,7 +143,7 @@ void lcd_data(int value)
 
 // Function to flip RS-bit. input == 1, sets RS to data mode
 // input == 2 sets RS to instruction mode
-int RS_FLIP(int value)
+void RS_FLIP(int value)
 {
     if (value == 1)
         (GPIO_PORTD_DATA_R |= LCD_RS);
@@ -152,7 +152,7 @@ int RS_FLIP(int value)
     wait_micro(100);
 }
 
-int E_FLIP (int value)
+void E_FLIP (int value)
 {
     if (value == 1)
         (GPIO_PORTD_DATA_R |= LCD_E);

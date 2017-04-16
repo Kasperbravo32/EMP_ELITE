@@ -44,6 +44,7 @@ int main(void)
     init_systick();
     gpio_setup();
     LCD_setup();
+    lcd_init();
     ADC1_setup(SETUP_PB4);
     DMA_setup();
 
