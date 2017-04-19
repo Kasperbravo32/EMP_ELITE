@@ -9,6 +9,8 @@
 // -----------------------------------
 
 #include <stdint.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "tm4c123gh6pm.h"
 #include "lcd.h"
 #include "switches.h"
@@ -21,31 +23,36 @@
 //              Variables
 // -----------------------------------
 
-volatile INT64U pause_screen_timer;
+extern int current_state       = MAIN;
+static int pulse_triggered     = 0;
+static int pulse_counter_60    = 0;
+static int pulse_counter       = 0;
 
-static long int     ADC0_result         = 0;
-static long int     ADC1_result         = 0;
-/*static */int          pulse_triggered     = 0;
-/*static long */int     pulse_counter_60    = 0;
-/*static long */int     pulse_counter       = 0;
-static int          current_state       = MAIN;
+static long int ADC0_result         = 0;
+static long int ADC1_result         = 0;
+
+static char pulse_string[]     =  "000";
+static char menu_strs[4][15] = {"Pulse" , "FFT" , "Credits" , "Settings"};
 
 static INT8U  arrow_pos           = 1;
 static INT8U  pause_dummy         = 0;
-/*static */char  pulse_string[7]     =  "0000000";
-/*static */const char   menu_strs[4][15]    = {"Pulse" , "FFT" , "Credits" , "Settings"};
+
 static INT8U  line_one_char       = 0x7E;
 static INT8U  line_two_char       = ' ';
 static INT8U  line_three_char     = ' ';
 static INT8U  line_four_char      = ' ';
 
-static INT64U update_state_timer  = TIMER_4000;
-static INT64U LED_timer           = TIMER_1000;
-
+static   INT64U update_state_timer  = TIMER_4000;
+static   INT64U LED_timer           = TIMER_1000;
+volatile INT64U pause_screen_timer;
 // -----------------------------------
 //              Functions
 // -----------------------------------
 
+
+/* --------------------------------------------
+ *              Handle clicks
+ * ------------------------------------------*/
 void handle_click(int value)
 {
     switch(value)
@@ -254,6 +261,9 @@ void handle_click(int value)
     }
 }
 
+/* --------------------------------------------
+ *              Move cursor down
+ * ------------------------------------------*/
 void lcd_move_arrow_down()
 {
     arrow_pos++;
@@ -311,6 +321,10 @@ void lcd_move_arrow_down()
     }
 }
 
+
+/* --------------------------------------------
+ *              Move cursor up
+ * ------------------------------------------*/
 void lcd_move_arrow_up()
 {
     arrow_pos--;
@@ -368,6 +382,9 @@ void lcd_move_arrow_up()
     }
 }
 
+/* --------------------------------------------
+ *                  Menu out
+ * ------------------------------------------*/
 void lcd_menu()
 {
     switch(arrow_pos)
@@ -390,7 +407,9 @@ void lcd_menu()
         break;
     }
 }
-
+/* --------------------------------------------
+ *           Register enter click
+ * ------------------------------------------*/
 void lcd_enter()
 {
     if (arrow_pos == 1)
@@ -411,6 +430,10 @@ void lcd_enter()
     }
 }
 
+
+/* --------------------------------------------
+ *              Return to menu
+ * ------------------------------------------*/
 void return_menu()
 {
     current_state = MAIN;
@@ -431,25 +454,23 @@ void return_menu()
 
 }
 
+
+
+/* --------------------------------------------
+ *              Pulse-function
+ * ------------------------------------------*/
 void enter_pulse()
 {
     current_state = PULS;
+    pulse_counter_60++;
+
+    /*
     pulse_counter_60 = pulse_counter * 12;
     pulse_counter = 0;
+    */
     wait_mil(1);
     sprintf(pulse_string, "%d", pulse_counter_60);               // Der er noget galt med cast'en fra int til string. Det må i bøvle med :)
-    /*if(pulse_counter_60 >= 0 && pulse_counter_60 < 50)
-        pulse_string = "0-50";
-    else if(pulse_counter_60 >= 50 && pulse_counter_60 < 100)
-            pulse_string = "50-100";
-    else if(pulse_counter_60 >= 100 && pulse_counter_60 < 150)
-            pulse_string = "100-150";
-    else if(pulse_counter_60 >= 150 && pulse_counter_60 < 200)
-            pulse_string = "150-200";
-    else if(pulse_counter_60 >= 200 && pulse_counter_60 < 250)
-            pulse_string = "200-250";
-    else if(pulse_counter_60 >= 250)
-            pulse_string = "250+";*/
+
     wait_mil(1);
     lcd_instruct(LCD_CLEAR_DISPLAY);
     wait_mil(1);
@@ -457,10 +478,10 @@ void enter_pulse()
     wait_mil(1);
     lcd_data_string(pulse_string);
     wait_mil(1);
-    //pulse_counter = 0;
-    //pulse_counter_60 = 0;
-    //pulse_string[3] = "000";
 }
+
+
+
 
 void enter_FFT()
 {
@@ -531,15 +552,22 @@ void ADC0()
 
 }
 */
+
+/*
+ * ADC1 function currently counts the pulses and pulse length, for further analyzing of pulses to detect if a beat has been skipped.
+ */
+
 void ADC1()
-{
-    if ((ADC1_result > 3100) && (pulse_triggered == 0))
-    {   // Hvis input er over ~2.5 volt OG der har været en down-slope, -
-        pulse_counter++;                                                // for at forhindre flere puls slag på ét slag.
-        pulse_triggered = 1;
+{/*
+    if ((ADC1_result > 3100) && (pulse_triggered == 0))                 // Hvis input er over ~2.5 volt OG der har været en down-slope.
+    {
+        pulse_counter++;
+        pulse_triggered = 1;                                            // for at forhindre flere puls slag på ét slag.
     }
-    else if ((ADC1_result < 3000) && (pulse_triggered == 1))
-    {              //
-        pulse_triggered = 0;
+    else if ((ADC1_result < 3000) && (pulse_triggered == 1))            // Hvis signalet går fra up til down
+    {
+        pulse_triggered = 0;                                            // Gør det muligt at detektere nyt slag
     }
+
+    */
 }

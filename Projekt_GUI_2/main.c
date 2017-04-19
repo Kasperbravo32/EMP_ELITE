@@ -15,6 +15,7 @@
 #include "setup.h"
 #include "tm4c123gh6pm.h"
 #include "rtcs.h"
+#include "adcudma.h"
 
 // --------------------------------------
 //              Functions
@@ -39,19 +40,19 @@ extern INT16S ticks;
 
 int main(void)
 {
-    disable_global_int();
 
-    init_systick();
-    gpio_setup();
-    LCD_setup();
-    lcd_init();
-    ADC1_setup(SETUP_PB4);
-    DMA_setup();
+    disable_global_int();                   // Disable interrupts for setup of systick
+    init_systick();                         // Initialize systick
+    gpio_setup();                           // Setup general purpose ports for switch + led use
+    LCD_setup();                            // Setup LCD
+    lcd_init();                             // Initialize lcd
+    ADC1_setup(SETUP_PB4);                  // Setup ADC1 with PB4 / PB5
+    DMA_setup();                            // Setup UDMA
 
-    enable_global_int();
-    lcd_menu();
+    enable_global_int();                    // Enable global int after setup
+    lcd_menu();                             // Out the menu on screen for first time
 
-    while(1)
+    while(1)                                // Start Superloop
     {
         while(!ticks);
         ticks--;
@@ -73,15 +74,5 @@ int main(void)
         event  = determine_click();
                  handle_click(event);
                  ADC_collect();
-        /*
-        if (adcResult < 1300)
-            SET_LED(LED_RED);
-        else if (adcResult >= 1300 && adcResult < 2650)
-            SET_LED(LED_YELLOW);
-        else if (adcResult >= 2650 && adcResult < 3700)
-            SET_LED(LED_GREEN);
-        else
-            SET_LED(!LED_RED);
-        */
     }
 }
