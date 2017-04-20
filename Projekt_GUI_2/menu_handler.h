@@ -39,10 +39,10 @@ void handle_click(int value);
 void ADC_collect();
 
 //processes data from ADC0
-//void ADC0();
+void ADC_LED(int value);
 
 //processes data from ADC1
-void ADC1();
+void ADC_PULSE(int value);
 
 //moves the arrow/cursor down on the menu
 void lcd_move_arrow_down();
@@ -73,5 +73,12 @@ void pause_screen();
 
 //returns to the main menu
 void return_menu();
+
+// converts an int value to 3 characters
+void itostr(int value);
+
+// Calculates pulse from ticks
+int process_ticks(long int value);
+
 
 #endif /* MENU_HANDLER_H_ */

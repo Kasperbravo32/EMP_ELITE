@@ -1,5 +1,5 @@
 /*
- * anders.c
+ * menu_hangler.c
  *
  *  Created on: 30. mar. 2017
  *      Author: Frederik
@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "tm4c123gh6pm.h"
 #include "lcd.h"
 #include "switches.h"
@@ -18,32 +19,48 @@
 #include "emp_type.h"
 #include "menu_handler.h"
 #include "timers.h"
+#include "adcudma.h"
+
 
 // -----------------------------------
 //              Variables
 // -----------------------------------
 
-extern int current_state       = MAIN;
-static int pulse_triggered     = 0;
-static int pulse_counter_60    = 0;
-static int pulse_counter       = 0;
+static int current_state             = MAIN;
+static int pulse_trigger             = 0;
+static int pulse_counter_min         = 0;
+static int pulse_counter             = 0;
+static long int pulse_ticks          = 0;
+static int pulse_calc                = 0;
 
-static long int ADC0_result         = 0;
-static long int ADC1_result         = 0;
+static long int ADC0_result          = 0;
+static long int ADC1_result          = 0;
 
-static char pulse_string[]     =  "000";
-static char menu_strs[4][15] = {"Pulse" , "FFT" , "Credits" , "Settings"};
+static char pulse_string[]           = "000";
 
-static INT8U  arrow_pos           = 1;
-static INT8U  pause_dummy         = 0;
+char pulse_stat_1[16] = "Very Low Pulse!";
+char pulse_stat_2[16] = "Low Pulse";
+char pulse_stat_3[16] = "O.K.";
+char pulse_stat_4[16] = "High Pulse";
+char pulse_stat_5[16] = "Very High Pulse!";
 
-static INT8U  line_one_char       = 0x7E;
-static INT8U  line_two_char       = ' ';
-static INT8U  line_three_char     = ' ';
-static INT8U  line_four_char      = ' ';
+char pulse_status[16]           = "Very Low Pulse!";
+static char char_one                 = '1';
+static char char_two                 = '2';
+static char char_three               = '3';
 
-static   INT64U update_state_timer  = TIMER_4000;
-static   INT64U LED_timer           = TIMER_1000;
+const static char menu_strs[4][15]   = {"Pulse" , "FFT" , "Credits" , "Settings"};
+
+static INT8U  arrow_pos              = 1;
+static INT8U  pause_dummy            = 0;
+
+static INT8U  line_one_char          = 0x7E;
+static INT8U  line_two_char          = ' ';
+static INT8U  line_three_char        = ' ';
+static INT8U  line_four_char         = ' ';
+
+static   INT64U update_state_timer   = TIMER_4000;
+static   INT64U LED_timer            = TIMER_1000;
 volatile INT64U pause_screen_timer;
 // -----------------------------------
 //              Functions
@@ -57,38 +74,41 @@ void handle_click(int value)
 {
     switch(value)
     {
-    case 0:
+    /*
+     * Update state loop
+     */
+    case NO_EVENT :
+
         if (! --update_state_timer)
         {
-            update_state_timer = TIMER_4000;
             if (current_state == MAIN)
             {
+                update_state_timer = TIMER_5000;
                 SET_LED(LED_RED);
-                //break;
             }
             else if (current_state == PULS)
             {
+                update_state_timer = TIMER_1500;
                 SET_LED(LED_YELLOW);
                 enter_pulse();
-                //break;
             }
             else if (current_state == FFT)
             {
+                update_state_timer = TIMER_1500;
                 SET_LED(LED_GREEN);
                 enter_FFT();
-                //break;
             }
             else if (current_state == CREDITS)
             {
+                update_state_timer = TIMER_5000;
                 SET_LED(LED_RED | LED_YELLOW);
                 enter_credits();
-                //break;
             }
             else if (current_state == SETTINGS)
             {
+                update_state_timer = TIMER_5000;
                 SET_LED(LED_YELLOW | LED_GREEN);
                 enter_settings();
-                //break;
             }
         }
         break;
@@ -100,27 +120,13 @@ void handle_click(int value)
         if (current_state == MAIN)
         {
             lcd_move_arrow_down();
-        }/*
-        else if (current_state == PULS)
-        {
-
+            break;
         }
-        else if (current_state == FFT)
-        {
-
-        }
-        else if (current_state == CREDITS)
-        {
-
-        }
-        else if (current_state == SETTINGS)
-        {
-
-        }*/
         else if (current_state == PAUSE)
         {
             current_state = MAIN;
             return_menu();
+            break;
         }
         break;
 
@@ -131,23 +137,7 @@ void handle_click(int value)
         if (current_state == MAIN)
         {
             lcd_enter();
-        }/*
-        else if (current_state == PULS)
-        {
-
         }
-        else if (current_state == FFT)
-        {
-
-        }
-        else if (current_state == CREDITS)
-        {
-
-        }
-        else if (current_state == SETTINGS)
-        {
-
-        }*/
         break;
 
     case SW1_LONG:
@@ -157,23 +147,7 @@ void handle_click(int value)
         if (current_state != MAIN)
         {
             return_menu();
-        }/*
-        else if (current_state == PULS)
-        {
-
         }
-        else if (current_state == FFT)
-        {
-
-        }
-        else if (current_state == CREDITS)
-        {
-
-        }
-        else if (current_state == SETTINGS)
-        {
-
-        }*/
         break;
 
     case SW2_SINGLE:
@@ -182,28 +156,14 @@ void handle_click(int value)
         if (current_state == MAIN)
         {
             lcd_move_arrow_up();
-        }/*
-        else if (current_state == PULS)
-        {
-
         }
-        else if (current_state == FFT)
-        {
-
-        }
-        else if (current_state == CREDITS)
-        {
-
-        }
-        else if (current_state == SETTINGS)
-        {
-
-        }*/
         else if (current_state == PAUSE)
         {
             current_state = MAIN;
             return_menu();
         }
+
+
         break;
 
     case SW2_DOUBLE:
@@ -237,29 +197,14 @@ void handle_click(int value)
         if (current_state != MAIN)
         {
             return_menu();
-        }/*
-        else if (current_state == PULS)
-        {
-
         }
-        else if (current_state == FFT)
-        {
-
-        }
-        else if (current_state == CREDITS)
-        {
-
-        }
-        else if (current_state == SETTINGS)
-        {
-
-        }*/
         break;
 
     default:
         break;
     }
 }
+
 
 /* --------------------------------------------
  *              Move cursor down
@@ -382,10 +327,12 @@ void lcd_move_arrow_up()
     }
 }
 
+
 /* --------------------------------------------
  *                  Menu out
  * ------------------------------------------*/
 void lcd_menu()
+
 {
     switch(arrow_pos)
     {
@@ -407,6 +354,8 @@ void lcd_menu()
         break;
     }
 }
+
+
 /* --------------------------------------------
  *           Register enter click
  * ------------------------------------------*/
@@ -455,34 +404,36 @@ void return_menu()
 }
 
 
-
 /* --------------------------------------------
  *              Pulse-function
  * ------------------------------------------*/
 void enter_pulse()
 {
+
     current_state = PULS;
-    pulse_counter_60++;
-
-    /*
-    pulse_counter_60 = pulse_counter * 12;
-    pulse_counter = 0;
-    */
-    wait_mil(1);
-    sprintf(pulse_string, "%d", pulse_counter_60);               // Der er noget galt med cast'en fra int til string. Det må i bøvle med :)
-
-    wait_mil(1);
     lcd_instruct(LCD_CLEAR_DISPLAY);
-    wait_mil(1);
-    lcd_data_string("Puls : ");
-    wait_mil(1);
-    lcd_data_string(pulse_string);
-    wait_mil(1);
+    lcd_data_string("Pulse : ");
+
+    itostr(pulse_calc);
+    if (char_one == '0')
+        char_one = ' ';
+    if (char_two == '0')
+        char_two = ' ';
+
+    lcd_data(char_one);
+    lcd_data(char_two);
+    lcd_data(char_three);
+
+    lcd_instruct(LCD_LINE_THREE);
+    lcd_data_string("Status : ");
+    lcd_instruct(LCD_LINE_FOUR);
+    lcd_data_string(pulse_status);
 }
 
 
-
-
+/* --------------------------------------------
+ *               FFT-function
+ * ------------------------------------------*/
 void enter_FFT()
 {
     current_state = FFT;
@@ -490,6 +441,10 @@ void enter_FFT()
     lcd_data_string("Func : FFT");
 }
 
+
+/* --------------------------------------------
+ *               Credits-function
+ * ------------------------------------------*/
 void enter_credits()
 {
     current_state = CREDITS;
@@ -497,6 +452,10 @@ void enter_credits()
     lcd_data_string("Func : Credits");
 }
 
+
+/* --------------------------------------------
+ *               Settings-function
+ * ------------------------------------------*/
 void enter_settings()
 {
     current_state = SETTINGS;
@@ -504,6 +463,10 @@ void enter_settings()
     lcd_data_string("Func : Settings");
 }
 
+
+/* --------------------------------------------
+ *               pause-function
+ * ------------------------------------------*/
 void pause_screen()
 {
     pause_dummy++;
@@ -534,40 +497,97 @@ void pause_screen()
         pause_dummy = 0;
 }
 
-void ADC_collect()
+
+
+/* --------------------------------------------
+ *               ADC1-collect-function
+ * ------------------------------------------*/
+void ADC_collect(int value)
 {
-    /*
-    ADC0_result = ADC0_SSFIFO3_R;
-    ADC0_ISC_R = (1 << 3);
-    */
-    ADC1_result = ADC1_SSFIFO3_R;   //gets the data from the queue
-    ADC1_ISC_R = (1 << 3);          //
+    ADC1_result = ADC1_SSFIFO3_R;   // Gets the data from the queue
+    ADC1_ISC_R = (1 << 3);          // Resets interrupt flag, to enable new data to be put into the FIFO
 
-    //ADC0();   // Funktion som behandler data fra ADC0. ADC0 er ikke sat op endnu :(
-    ADC1();     // Funktion som behandler det data vi får fra ADC1 kaldes. pt er det puls.
+    if (value == SETUP_PB4)
+        ADC_PULSE(ADC1_result);
+    else if (value == SETUP_PB5)
+        ADC_LED(ADC1_result);
 }
-/*
-void ADC0()
+
+
+
+/* --------------------------------------------
+ *               ADC_pulse funktion
+ * ------------------------------------------*/
+void ADC_PULSE(int value)
 {
+    if (pulse_trigger == 0 && value > 3100)
+    {
+        pulse_trigger = 1;
+        pulse_ticks++;
+        pulse_calc = (60.0 / (0.005*value));
 
+        if (pulse_calc < 30)
+            strcpy(pulse_status , pulse_stat_1);
+        else if (pulse_calc < 45 && pulse_calc > 29)
+            strcpy(pulse_status , pulse_stat_2);
+        else if (pulse_calc > 44 && pulse_calc < 80)
+            strcpy(pulse_status , pulse_stat_3);
+        else if (pulse_calc > 79 && pulse_calc < 100)
+            strcpy(pulse_status , pulse_stat_4);
+        else if (pulse_calc > 99)
+            strcpy(pulse_status , pulse_stat_5);
+        else
+            strcpy(pulse_status , pulse_stat_3);
+
+
+        pulse_ticks = 0;
+    }
+    else if (pulse_trigger == 1 && value > 3100)
+    {
+        pulse_ticks++;
+    }
+
+    else if (pulse_trigger == 1 && value < 3000)
+    {
+        pulse_ticks++;
+        pulse_trigger = 0;
+    }
+    else if (pulse_trigger == 0 && value < 3000)
+    {
+        pulse_ticks++;
+    }
 }
-*/
 
-/*
- * ADC1 function currently counts the pulses and pulse length, for further analyzing of pulses to detect if a beat has been skipped.
- */
 
-void ADC1()
-{/*
-    if ((ADC1_result > 3100) && (pulse_triggered == 0))                 // Hvis input er over ~2.5 volt OG der har været en down-slope.
-    {
-        pulse_counter++;
-        pulse_triggered = 1;                                            // for at forhindre flere puls slag på ét slag.
+
+/* --------------------------------------------
+*            Convers ints to strings
+ * ------------------------------------------*/
+void itostr(int value)
+{
+    char_one   = (value / 100) % 10 + '0';
+    char_two   = (value / 10) % 10 + '0';
+    char_three = (value / 1) % 10 + '0';
+}
+
+
+
+/* --------------------------------------------
+ *               Potmeter LED-flash funktion
+ * ------------------------------------------*/
+void ADC_LED(int value)
+{
+    if (value > 0 && value < 1300) {
+        SET_LED(LED_RED);
     }
-    else if ((ADC1_result < 3000) && (pulse_triggered == 1))            // Hvis signalet går fra up til down
-    {
-        pulse_triggered = 0;                                            // Gør det muligt at detektere nyt slag
+    else if (value > 1300 && value < 2650) {
+        SET_LED(LED_YELLOW);
+    }
+    else if (value > 2650 && value < 3700) {
+        SET_LED(LED_GREEN);
+    }
+    else if (value > 3700) {
+        SET_LED(!LED_RED);
     }
 
-    */
 }

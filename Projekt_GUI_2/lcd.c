@@ -21,16 +21,16 @@ void lcd_init(void)
     GPIO_PORTC_DATA_R &= ~(0xF0);       //disables all data ports
     GPIO_PORTD_DATA_R &= ~(0x0C);       //disables RS and Enable
 
-    wait_mil(500);                          // wait 500ms
+    wait_mil(5);                          // wait 500ms
 
     lcd_write4(LCD_FUNCTIONRESET);          //First try
-    wait_micro(40000);
+    wait_micro(200);
 
     lcd_write4(LCD_FUNCTIONRESET);          //Second try
-    wait_micro(400);
+    wait_micro(200);
 
     lcd_write4(LCD_FUNCTIONRESET);          //Third and lucky try
-    wait_micro(400);
+    wait_micro(200);
 
     lcd_write4(LCD_ENABLE_4BIT);            //Enable 4bit mode
     wait_micro(160);
