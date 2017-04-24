@@ -79,4 +79,6 @@ void RS_flip(int value);
 
 void E_FLIP(int value);
 
+void lcd_data_custom(uint8_t charmap[]);
+
 #endif /* LCD_H_ */

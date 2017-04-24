@@ -21,7 +21,8 @@
 #define TIMER_2000    400                             // ~2   seconds
 #define TIMER_3000    600                             // ~3   seconds
 #define TIMER_4000    800                             // ~4   seconds
-#define TIMER_5000   1000
-#define TIMER_60000 12000                           // ~60  seconds
+#define TIMER_5000   1000                             // ~5 seconds
+#define TIMER_10000  2000                             // ~10 seconds
+#define TIMER_60000 12000                             // ~60  seconds
 
 #endif /* TIMERS_H_*/

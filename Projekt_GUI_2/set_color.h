@@ -31,5 +31,9 @@
 
 /*****************************   Functions   *******************************/
 void SET_LED(INT8U value);
+
+int alive_LED(INT16U timer);
+
+int LED_OFF(INT16U timer);
 /****************************** End Of Module *******************************/
 #endif /*SET_COLOR_H_*/

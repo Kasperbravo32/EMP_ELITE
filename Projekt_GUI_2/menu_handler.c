@@ -29,17 +29,17 @@
 //
 // ----------------------------------------------------------------------------------------------------------
 
-
-
 static int current_state             = MAIN;
+static int current_pulse_state       = OK;
+static int pulse_state               = VLP;
 static int current_gender            = MALE;
 static int current_age               = 20;
 static int pulse_trigger             = 0;
 static int age_chars                 = 0;
 static int arrow_pos                 = 1;
 static int SAB_flag                  = 0;
-static int state_update_LED          = 0;
 
+static int state_update_LED          = 1;
 
 static long int pulse_avg_arr[4];
 static long int pulse_tick_arr[4];
@@ -53,7 +53,6 @@ static char age_char_1               = ' ';
 static char age_char_2               = ' ';
 static char age_char_3               = ' ';
 
-static char current_pulse_status[20];
 static char pulse_stat_1[20]         = "Very Low Pulse!";
 static char pulse_stat_2[20]         = "Low Pulse";
 static char pulse_stat_3[20]         = "O.K.";
@@ -62,6 +61,14 @@ static char pulse_stat_5[20]         = "Very High Pulse!";
 static char pulse_stat_SAB[20]       = "Skipped a beat!";
 static char pulse_str[5]             = "0000";
 static char pulse_status[20]         = "Very Low Pulse!";
+static char lillemand[8]             ={0b01110,
+                                       0b01010,
+                                       0b01110,
+                                       0b00100,
+                                       0b11111,
+                                       0b00100,
+                                       0b01010,
+                                       0b10001};
 
 const static char menu_strs[4][15]   = {"Pulse" , "FFT" , "Details" , "Settings"};
 
@@ -82,7 +89,6 @@ volatile INT64U pause_screen_timer;
 //                                                Functions
 //
 // ----------------------------------------------------------------------------------------------------------
-
 
 /* --------------------------------------------
  *              Handle clicks
@@ -120,7 +126,7 @@ void handle_click(int value)
         else if (current_state == PAUSE)
         {
             current_state = MAIN;
-            return_menu();
+            lcd_menu();
             break;
         }
         break;
@@ -129,6 +135,7 @@ void handle_click(int value)
         SET_LED(LED_YELLOW);
         LED_timer = TIMER_1000;
         //pause_screen_timer = TIMER_60000;
+
         if (current_state == MAIN)
         {
             lcd_enter();
@@ -136,16 +143,12 @@ void handle_click(int value)
 
         else if (current_state == DETAILS_GENDER)
         {
-            if (details_line_one_char == 0x7E)
-            {
+            if (line_three_char == 0x7E)
                 current_gender = MALE;
-                enter_age();
-            }
-            else
-            {
+            else if (line_four_char == 0x7E)
                 current_gender = FEMALE;
-                enter_age();
-            }
+
+            enter_age();
         }
 
         break;
@@ -156,8 +159,9 @@ void handle_click(int value)
         //pause_screen_timer = TIMER_60000;
         if (current_state != MAIN)
         {
-            return_menu();
+            lcd_menu();
         }
+
         break;
 
     case SW2_SINGLE:
@@ -167,14 +171,24 @@ void handle_click(int value)
         {
             lcd_move_arrow(UP , 1 , 4);
         }
+        else if (current_state == DETAILS_GENDER)
+        {
+            lcd_move_arrow(UP , 3 , 4);
+        }
+
+
         else if (current_state == PAUSE)
         {
-            current_state = MAIN;
-            return_menu();
+            lcd_menu();
         }
         else if (current_state == PULS)
         {
             SAB_flag = 0;
+        }
+        else if (current_state == SETTINGS)
+        {
+            lcd_data_custom(lillemand);
+            lcd_data(0x00);
         }
 
 
@@ -193,10 +207,12 @@ void handle_click(int value)
     case SW2_LONG:
         SET_LED(LED_RED | LED_YELLOW | LED_GREEN);
         LED_timer = TIMER_1000;
+
         if (current_state != MAIN)
         {
-            return_menu();
+            lcd_menu();
         }
+
         break;
 
     default:
@@ -230,7 +246,7 @@ void handle_keypad(INT8U value)
             age_chars++;
             break;
         case 3 :
-            return_menu();
+            lcd_menu();
             break;
 
         }
@@ -372,32 +388,6 @@ void lcd_move_arrow(int value, int upper_lim, int lower_lim)
             break;
         }
 }
-/* --------------------------------------------
- *                  Menu out
- * ------------------------------------------*/
-void lcd_menu()
-
-{
-    switch(arrow_pos)
-    {
-    case 1:
-        lcd_instruct(LCD_CLEAR_DISPLAY);
-        wait_mil(2);
-
-        lcd_data(line_one_char);
-        lcd_data_string(menu_strs[0]);
-        lcd_instruct(LCD_LINE_TWO);
-        lcd_data(line_two_char);
-        lcd_data_string(menu_strs[1]);
-        lcd_instruct(LCD_LINE_THREE);
-        lcd_data(line_three_char);
-        lcd_data_string(menu_strs[2]);
-        lcd_instruct(LCD_LINE_FOUR);
-        lcd_data(line_four_char);
-        lcd_data_string(menu_strs[3]);
-        break;
-    }
-}
 
 
 /* --------------------------------------------
@@ -425,14 +415,14 @@ void lcd_enter()
 
 
 /* --------------------------------------------
- *              Return to menu
+ *                  Menu out
  * ------------------------------------------*/
-void return_menu()
+void lcd_menu()
 {
+    current_pulse_state = RPS;
     current_state = MAIN;
     lcd_instruct(LCD_CLEAR_DISPLAY);
     wait_mil(2);
-
     lcd_data(line_one_char);
     lcd_data_string(menu_strs[0]);
     lcd_instruct(LCD_LINE_TWO);
@@ -444,7 +434,6 @@ void return_menu()
     lcd_instruct(LCD_LINE_FOUR);
     lcd_data(line_four_char);
     lcd_data_string(menu_strs[3]);
-
 }
 
 
@@ -469,10 +458,11 @@ void enter_pulse()
     lcd_instruct(LCD_LINE_ONE + 8);
     lcd_data_string(pulse_str);
 
-    if (current_pulse_status != pulse_status)
+    if (current_pulse_state != pulse_state)
     {
-        lcd_instruct(LCD_LINE_FOUR + 4);
-        lcd_data_string("                ");
+        current_pulse_state = pulse_state;
+        lcd_instruct(LCD_LINE_FOUR);
+        lcd_data_string("                    ");
         lcd_instruct(LCD_LINE_FOUR);
         lcd_data_string(pulse_status);
     }
@@ -503,6 +493,7 @@ void enter_details()
     wait_mil(1);
 
 }
+
 
 /* --------------------------------------------
  *               Settings-function
@@ -594,45 +585,49 @@ void ADC_PULSE(int value)
 
         pulse_avg = ( pulse_avg_arr[0] + pulse_avg_arr[1] + pulse_avg_arr[2] ) / 3;
 
-
-
-
         if(SAB_flag == 0)
         {
             if (pulse_avg_arr[2] < 30)
             {
-                strcpy(current_pulse_status , pulse_stat_1);
+                //strcpy(current_pulse_status , pulse_stat_1);
+                pulse_state = VLP;
                 strcpy(pulse_status , pulse_stat_1);
             }
             else if (pulse_avg_arr[2] > 29 && pulse_avg_arr[2] < 45)
             {
-                strcpy(current_pulse_status , pulse_stat_2);
+                //strcpy(current_pulse_status , pulse_stat_2);
+                pulse_state = LP;
                 strcpy(pulse_status , pulse_stat_2);
             }
             else if (pulse_avg_arr[2] > 44 && pulse_avg_arr[2] < 80)
             {
-                strcpy(current_pulse_status , pulse_stat_3);
+                //strcpy(current_pulse_status , pulse_stat_3);
+                pulse_state = OK;
                 strcpy(pulse_status , pulse_stat_3);
             }
             else if (pulse_avg_arr[2] > 79 && pulse_avg_arr[2] < 100)
             {
-                strcpy(current_pulse_status , pulse_stat_4);
+                //strcpy(current_pulse_status , pulse_stat_4);
+                pulse_state = HP;
                 strcpy(pulse_status , pulse_stat_4);
             }
             else if (pulse_avg_arr[2] > 99)
             {
-                strcpy(current_pulse_status , pulse_stat_5);
+                //strcpy(current_pulse_status , pulse_stat_5);
+                pulse_state = VHP;
                 strcpy(pulse_status , pulse_stat_5);
             }
             else
             {
-                strcpy(current_pulse_status , pulse_stat_3);
+                //strcpy(current_pulse_status , pulse_stat_3);
+                pulse_state = OK;
                 strcpy(pulse_status , pulse_stat_3);
             }
         }
         else if (SAB_flag == 1)
         {
-            strcpy(current_pulse_status , pulse_stat_SAB);
+            pulse_state = SABP;
+            //strcpy(current_pulse_status , pulse_stat_SAB);
             strcpy(pulse_status , pulse_stat_SAB);
         }
 
@@ -669,7 +664,6 @@ void itostr(long int value)
     if (value < 1000 && pulse_str[3] != ' ')
         pulse_str[3] = ' ';
 }
-
 
 
 // --------------------------------------------
@@ -711,13 +705,12 @@ void enter_gender()
     wait_mil(1);
     lcd_data_string("   Gender");
     lcd_instruct(LCD_LINE_THREE);
-    lcd_data(details_line_one_char);
+    lcd_data(line_three_char);
     lcd_data_string("Male");
     lcd_instruct(LCD_LINE_FOUR);
-    lcd_data(details_line_two_char);
+    lcd_data(line_four_char);
     lcd_data_string("Female");
 }
-
 
 
 /* --------------------------------------------
@@ -726,6 +719,7 @@ void enter_gender()
 void enter_age()
 {
     current_state = DETAILS_AGE;
+
     lcd_instruct(LCD_CLEAR_DISPLAY);
     wait_mil(1);
     lcd_data_string("   Age");
@@ -736,7 +730,6 @@ void enter_age()
     lcd_data(age_char_2);
     lcd_data(age_char_3);
 }
-
 
 
 /* --------------------------------------------
@@ -755,7 +748,7 @@ void update_state()
         }
         else if (current_state == PULS)
         {
-            update_state_timer = TIMER_500;
+            update_state_timer = TIMER_1000;
 
             if (state_update_LED)
                 SET_LED(LED_YELLOW);
@@ -788,7 +781,7 @@ void update_state()
         }
         else if (current_state == SETTINGS)
         {
-            update_state_timer = TIMER_5000;
+            update_state_timer = TIMER_60000;
 
             if (state_update_LED)
                 SET_LED(LED_YELLOW | LED_GREEN);

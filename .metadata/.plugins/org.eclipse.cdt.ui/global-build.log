@@ -33,3 +33,1648 @@
 ' '
 
 **** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+subdir_rules.mk:9: recipe for target 'menu_handler.o' failed
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:317:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:398:21: error: 'MENU' undeclared (first use in this function)
+     current_state = MENU;
+                     ^
+../menu_handler.c:398:21: note: each undeclared identifier is reported only once for each function it appears in
+../menu_handler.c:402:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:635:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:34:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:45:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+gmake: *** [menu_handler.o] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:317:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:402:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:635:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:34:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:45:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:317:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:403:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:631:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:34:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:45:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:70:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:71:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:323:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:409:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:637:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:34:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:45:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:70:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:71:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:323:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:409:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:637:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:34:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:45:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:70:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:71:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:323:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:409:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:635:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:34:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:45:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:70:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:71:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:323:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:409:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:639:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:34:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:45:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:70:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:71:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../main.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"main.d" -MT"main.o" -o"main.o"  "../main.c"
+../main.c:31:17: warning: 'key_event' defined but not used [-Wunused-variable]
+ static   INT8U  key_event          = NO_EVENT;
+                 ^
+'Finished building: ../main.c'
+' '
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:325:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:411:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:647:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:47:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:73:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:325:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:411:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:647:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:47:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:73:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:325:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:411:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:648:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:47:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:73:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:324:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:410:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:646:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:47:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:71:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:324:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:410:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:642:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:47:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:71:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../set_color.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"set_color.d" -MT"set_color.o" -o"set_color.o"  "../set_color.c"
+subdir_rules.mk:9: recipe for target 'set_color.o' failed
+../set_color.c: In function 'alive_LED':
+../set_color.c:45:17: error: 'TIMER_500' undeclared (first use in this function)
+         timer = TIMER_500;
+                 ^
+../set_color.c:45:17: note: each undeclared identifier is reported only once for each function it appears in
+gmake: *** [set_color.o] Error 1
+'Building file: ../main.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"main.d" -MT"main.o" -o"main.o"  "../main.c"
+../main.c:31:17: warning: 'key_event' defined but not used [-Wunused-variable]
+ static   INT8U  key_event          = NO_EVENT;
+                 ^
+'Finished building: ../main.c'
+' '
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:324:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:410:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:642:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:47:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:71:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../main.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"main.d" -MT"main.o" -o"main.o"  "../main.c"
+../main.c:31:17: warning: 'key_event' defined but not used [-Wunused-variable]
+ static   INT8U  key_event          = NO_EVENT;
+                 ^
+'Finished building: ../main.c'
+' '
+'Building file: ../set_color.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"set_color.d" -MT"set_color.o" -o"set_color.o"  "../set_color.c"
+'Finished building: ../set_color.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../set_color.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"set_color.d" -MT"set_color.o" -o"set_color.o"  "../set_color.c"
+subdir_rules.mk:9: recipe for target 'set_color.o' failed
+../set_color.c: In function 'LED_OFF':
+../set_color.c:54:1: error: parameter name omitted
+ int LED_OFF(INT16U)
+ ^
+../set_color.c:56:13: error: 'timer' undeclared (first use in this function)
+     if (! --timer)
+             ^
+../set_color.c:56:13: note: each undeclared identifier is reported only once for each function it appears in
+../set_color.c:64:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+gmake: *** [set_color.o] Error 1
+'Building file: ../main.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"main.d" -MT"main.o" -o"main.o"  "../main.c"
+../main.c:31:17: warning: 'key_event' defined but not used [-Wunused-variable]
+ static   INT8U  key_event          = NO_EVENT;
+                 ^
+../main.c:34:17: warning: 'alive_timer_on' defined but not used [-Wunused-variable]
+ static   INT8U  alive_timer_on     = 0;
+                 ^
+'Finished building: ../main.c'
+' '
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:324:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:410:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:642:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:47:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:71:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../set_color.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"set_color.d" -MT"set_color.o" -o"set_color.o"  "../set_color.c"
+'Finished building: ../set_color.c'
+' '
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:325:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:411:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:643:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:73:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../main.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"main.d" -MT"main.o" -o"main.o"  "../main.c"
+../main.c:31:17: warning: 'key_event' defined but not used [-Wunused-variable]
+ static   INT8U  key_event          = NO_EVENT;
+                 ^
+../main.c:34:17: warning: 'alive_timer_on' defined but not used [-Wunused-variable]
+ static   INT8U  alive_timer_on     = 0;
+                 ^
+'Finished building: ../main.c'
+' '
+'Building file: ../set_color.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"set_color.d" -MT"set_color.o" -o"set_color.o"  "../set_color.c"
+'Finished building: ../set_color.c'
+' '
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:325:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:411:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:643:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:73:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+subdir_rules.mk:9: recipe for target 'menu_handler.o' failed
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:325:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:408:5: error: expected ';' before 'current_state'
+     current_state = MAIN;
+     ^
+../menu_handler.c:412:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:644:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:73:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+gmake: *** [menu_handler.o] Error 1
+'Building file: ../main.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"main.d" -MT"main.o" -o"main.o"  "../main.c"
+../main.c:31:17: warning: 'key_event' defined but not used [-Wunused-variable]
+ static   INT8U  key_event          = NO_EVENT;
+                 ^
+../main.c:34:17: warning: 'alive_timer_on' defined but not used [-Wunused-variable]
+ static   INT8U  alive_timer_on     = 0;
+                 ^
+'Finished building: ../main.c'
+' '
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:325:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:412:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:644:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:72:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:73:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../lcd.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"lcd.d" -MT"lcd.o" -o"lcd.o"  "../lcd.c"
+../lcd.c: In function 'lcd_instruct':
+../lcd.c:113:5: warning: implicit declaration of function 'RS_FLIP' [-Wimplicit-function-declaration]
+     RS_FLIP(INSTRUCT);
+     ^
+../lcd.c: At top level:
+../lcd.c:146:6: warning: conflicting types for 'RS_FLIP'
+ void RS_FLIP(int value)
+      ^
+../lcd.c:113:5: note: previous implicit declaration of 'RS_FLIP' was here
+     RS_FLIP(INSTRUCT);
+     ^
+'Finished building: ../lcd.c'
+' '
+'Building file: ../main.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"main.d" -MT"main.o" -o"main.o"  "../main.c"
+../main.c:31:17: warning: 'key_event' defined but not used [-Wunused-variable]
+ static   INT8U  key_event          = NO_EVENT;
+                 ^
+../main.c:34:17: warning: 'alive_timer_on' defined but not used [-Wunused-variable]
+ static   INT8U  alive_timer_on     = 0;
+                 ^
+'Finished building: ../main.c'
+' '
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c:191:22: warning: passing argument 1 of 'lcd_data' makes integer from pointer without a cast
+             lcd_data(lillemand);
+                      ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:72:6: note: expected 'int' but argument is of type 'char *'
+ void lcd_data(int value);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:339:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:426:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:658:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../lcd.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"lcd.d" -MT"lcd.o" -o"lcd.o"  "../lcd.c"
+../lcd.c: In function 'lcd_instruct':
+../lcd.c:113:5: warning: implicit declaration of function 'RS_FLIP' [-Wimplicit-function-declaration]
+     RS_FLIP(INSTRUCT);
+     ^
+../lcd.c: At top level:
+../lcd.c:146:6: warning: conflicting types for 'RS_FLIP'
+ void RS_FLIP(int value)
+      ^
+../lcd.c:113:5: note: previous implicit declaration of 'RS_FLIP' was here
+     RS_FLIP(INSTRUCT);
+     ^
+'Finished building: ../lcd.c'
+' '
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c:191:22: warning: passing argument 1 of 'lcd_data' makes integer from pointer without a cast
+             lcd_data(lillemand);
+                      ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:72:6: note: expected 'int' but argument is of type 'char *'
+ void lcd_data(int value);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:338:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:425:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:657:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:191:22: warning: passing argument 1 of 'lcd_data' makes integer from pointer without a cast
+             lcd_data(lillemand);
+                      ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:72:6: note: expected 'int' but argument is of type 'char *'
+ void lcd_data(int value);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:338:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:425:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:657:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+gmake[1]: 'Projekt_GUI_2.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../lcd.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"lcd.d" -MT"lcd.o" -o"lcd.o"  "../lcd.c"
+../lcd.c: In function 'lcd_instruct':
+../lcd.c:113:5: warning: implicit declaration of function 'RS_FLIP' [-Wimplicit-function-declaration]
+     RS_FLIP(INSTRUCT);
+     ^
+../lcd.c: At top level:
+../lcd.c:146:6: warning: conflicting types for 'RS_FLIP'
+ void RS_FLIP(int value)
+      ^
+../lcd.c:113:5: note: previous implicit declaration of 'RS_FLIP' was here
+     RS_FLIP(INSTRUCT);
+     ^
+'Finished building: ../lcd.c'
+' '
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:338:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:425:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:657:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../lcd.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"lcd.d" -MT"lcd.o" -o"lcd.o"  "../lcd.c"
+../lcd.c: In function 'lcd_instruct':
+../lcd.c:113:5: warning: implicit declaration of function 'RS_FLIP' [-Wimplicit-function-declaration]
+     RS_FLIP(INSTRUCT);
+     ^
+../lcd.c: At top level:
+../lcd.c:146:6: warning: conflicting types for 'RS_FLIP'
+ void RS_FLIP(int value)
+      ^
+../lcd.c:113:5: note: previous implicit declaration of 'RS_FLIP' was here
+     RS_FLIP(INSTRUCT);
+     ^
+'Finished building: ../lcd.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../lcd.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"lcd.d" -MT"lcd.o" -o"lcd.o"  "../lcd.c"
+../lcd.c: In function 'lcd_instruct':
+../lcd.c:113:5: warning: implicit declaration of function 'RS_FLIP' [-Wimplicit-function-declaration]
+     RS_FLIP(INSTRUCT);
+     ^
+../lcd.c: At top level:
+../lcd.c:146:6: warning: conflicting types for 'RS_FLIP'
+ void RS_FLIP(int value)
+      ^
+../lcd.c:113:5: note: previous implicit declaration of 'RS_FLIP' was here
+     RS_FLIP(INSTRUCT);
+     ^
+'Finished building: ../lcd.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../main.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"main.d" -MT"main.o" -o"main.o"  "../main.c"
+../main.c:31:17: warning: 'key_event' defined but not used [-Wunused-variable]
+ static   INT8U  key_event          = NO_EVENT;
+                 ^
+../main.c:34:17: warning: 'alive_timer_on' defined but not used [-Wunused-variable]
+ static   INT8U  alive_timer_on     = 0;
+                 ^
+'Finished building: ../main.c'
+' '
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:338:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:425:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:657:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building file: ../set_color.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"set_color.d" -MT"set_color.o" -o"set_color.o"  "../set_color.c"
+'Finished building: ../set_color.c'
+' '
+'Building file: ../switches.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"switches.d" -MT"switches.o" -o"switches.o"  "../switches.c"
+'Finished building: ../switches.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:338:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:425:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:657:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../lcd.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"lcd.d" -MT"lcd.o" -o"lcd.o"  "../lcd.c"
+../lcd.c: In function 'lcd_instruct':
+../lcd.c:113:5: warning: implicit declaration of function 'RS_FLIP' [-Wimplicit-function-declaration]
+     RS_FLIP(INSTRUCT);
+     ^
+../lcd.c: At top level:
+../lcd.c:146:6: warning: conflicting types for 'RS_FLIP'
+ void RS_FLIP(int value)
+      ^
+../lcd.c:113:5: note: previous implicit declaration of 'RS_FLIP' was here
+     RS_FLIP(INSTRUCT);
+     ^
+'Finished building: ../lcd.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:338:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:425:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:657:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:343:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:430:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:662:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:343:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:430:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:662:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:343:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:430:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:663:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:343:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:430:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:663:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:195:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:348:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:435:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:668:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
+             lcd_data_custom(lillemand);
+                             ^
+In file included from ../menu_handler.c:17:0:
+../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
+ void lcd_data_custom(uint8_t charmap[]);
+      ^
+../menu_handler.c: In function 'lcd_move_arrow':
+../menu_handler.c:340:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+             lcd_instruct(LCD_LINE_FOUR);
+             ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:427:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+     lcd_data_string(menu_strs[0]);
+     ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:660:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_one_char  = 0x7E;
+                 ^
+../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
+ static   INT8U  details_line_two_char  = ' ';
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****

@@ -25,15 +25,15 @@
 //              Variables
 // --------------------------------------
 
-volatile INT64U LED_timer          = TIMER_1000;
+volatile INT16U LED_timer          = TIMER_1000;
 static   INT16U alive_timer        = TIMER_500;
 static   INT8U  event              = NO_EVENT;
 static   INT8U  key_event          = NO_EVENT;
 static   INT64U pause_screen_timer = TIMER_1000;
 static   INT8U  pause_screen_on    = 0;
+static   INT8U  alive_timer_on     = 0;
 static   int    adc_pin            = SETUP_PB4;
 
-//testelesteleste
 // --------------------------------------
 //                Main
 // --------------------------------------
@@ -50,7 +50,6 @@ int main(void)
     lcd_init();                             // Initialize lcd
     ADC1_setup(adc_pin);                    // Setup ADC1 with PB4 / PB5
     //DMA_setup();                            // Setup UDMA
-
     enable_global_int();                    // Enable global int after setup
     lcd_menu();                             // Out the menu on screen for first time
 
@@ -60,17 +59,9 @@ int main(void)
         while(!ticks);
         ticks--;
 
-        if(! --alive_timer)
-        {
-            alive_timer = TIMER_500;
-            GPIO_PORTD_DATA_R ^= 0x40;
-        }
+        alive_timer = alive_LED(alive_timer);
 
-        if(! -- LED_timer)
-        {
-            LED_timer = TIMER_500;
-            SET_LED(!(LED_RED | LED_YELLOW | LED_GREEN));
-        }
+        LED_timer   = LED_OFF(LED_timer);
 
         if(! --pause_screen_timer && pause_screen_on == 1)
         {
@@ -81,8 +72,6 @@ int main(void)
         event = determine_click();
                 handle_click(event);
                 ADC_collect(adc_pin);
-
-
 
     }
 }

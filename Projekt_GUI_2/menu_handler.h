@@ -29,6 +29,14 @@
 
 #define UP              0
 #define DOWN            1
+
+#define VLP             0
+#define  LP             1
+#define  OK             2
+#define  HP             3
+#define VHP             4
+#define SABP            5
+#define RPS             6
 // -----------------------------------
 //              Variables
 // -----------------------------------

@@ -171,3 +171,18 @@ void lcd_data_string(char str[])
         wait_micro(40);
     }
 }
+
+
+
+void lcd_data_custom(uint8_t charmap[])
+{
+
+   lcd_instruct(0x00 | (0x06 << 1));
+   wait_micro(30);
+   for (int i=0; i<8; i++)
+   {
+      lcd_data(charmap[i]);      // call the virtual write method
+      wait_micro(40);
+   }
+   lcd_instruct(0x00 | (0x07 << 1));
+}
