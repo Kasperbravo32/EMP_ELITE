@@ -137,42 +137,64 @@ void ADC1_setup(int value)
 }
 
 /* --------------------------------------------
- *                  SETUP �DMA
+ *                  SETUP uDMA
  * ------------------------------------------*/
-void DMA_setup()
+void DMA_setup(void)
 {
     /*
      * Everything is set up using the Initialization and configuration guide in
      * "tm4c123gh6pm.pdf", page 599 - 603, + some additional pages for Register configurations
      * and specific device settings
     */
-    /* Module Initialization ----------------------------------------------------------------------- */
 
-    /*
-    1. Enable the �DMA clock using the RCGCDMA register (see page 341).                         µ
-    */
-    SYSCTL_RCGCDMA_R |= 0x1;
-    /*
-    2. Enable the �DMA controller by setting the MASTEREN bit of the DMA Configuration (DMACFG) µ
-    register.
-    */
-    UDMA_CFG_R |= 0x1;
+    // ---------------------- Module Initialization ---------------------- */
 
-    /*
-    3. Program the location of the channel control table by writing the base address of the table to the
-    DMA Channel Control Base Pointer (DMACTLBASE) register. The base address must be            µ
-    aligned on a 1024-byte boundary.
-    */
+    // 1. Enable the uDMA clock using the RCGCDMA register (see page 341).
+    SYSCTL_RCGCDMA_R |= SYSCTL_RCGCDMA_R0;
+    for (int i = 5; i > 0; i--);            // Do nothing to give the peripheral time to start.
+
+    // 3. Enable the uDMA controller by setting the MASTEREN bit of the DMA Configuration (DMACFG) register.
+    UDMA_CFG_R |= UDMA_CFG_MASTEN;
+
+    /*  3. Program the location of the channel control table by writing the base address of the table to the
+        DMA Channel Control Base Pointer (DMACTLBASE) register. The base address must be
+        aligned on a 1024-byte boundary. */
+    INT4U  udma_control[1024]; // Array to save control structure in for the uDMA
+
+
+    //udma_control[435] = 0;  // Unused.
+    #if defined(ewarm)
+    #pragma data_alignment=1024
+    uint8_t ui8ControlTable[1024];
+    #elif defined(ccs)
+    #pragma DATA_ALIGN(ui8ControlTable, 1024)
+    uint8_t ui8ControlTable[1024];
+    #else
+    uint8_t ui8ControlTable[1024] __attribute__ ((aligned(1024)));
+    #endif
+
+    UDMA_CHMAP3_R |= ui8ControlTable;
+
+    UDMA_ALTCLR_R |= (1<<27);
+
+    UDMA_USEBURSTCLR_R |= (1<<DMA_CH27);
+
+    // Channel 27 setup.
+    // Start item = 27*4 = 108
+    udma_control[432] = 0;  // Source End Pointer.
+    udma_control[433] = 0;  // Destination End Pointer.
+    udma_control[434] = 0;  // Control Word.
+
+
     //UDMA_CTLBASE_R |= (ARRAY << 10);          Create array somewhere, to be fed enough
 
 
 
-    /* Configure the Channel Attributes ------------------------------------------------------------ */
+    /* ---------------------- Configure the Channel Attributes ---------------------- */
 
-    /*    Channel 30 is optimized for software-initiated transfer (ours), so that channel will be used.
-     *
-    1. Program bit 30 of the DMA Channel Priority Set (DMAPRIOSET) or DMA Channel Priority      µ
-    Clear (DMAPRIOCLR) registers to set the channel to High priority or Default priority. */
+    /*  Channel 30 is optimized for software-initiated transfer (ours), so that channel will be used.
+        1. Program bit 30 of the DMA Channel Priority Set (DMAPRIOSET) or DMA Channel Priority
+        Clear (DMAPRIOCLR) registers to set the channel to High priority or Default priority. */
     UDMA_PRIOCLR_R = 0xFFFF;                // Clears priority of ALL channels, as a safety
     wait2_mil(1);
     UDMA_PRIOSET_R = 0x4000;                // Sets priority of channel 30 to high, above all others

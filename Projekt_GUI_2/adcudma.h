@@ -45,11 +45,12 @@ void ADC1_setup(int value);
  */
 
 /* --------------------------------------------
- *                  SETUP µDMA
+ *                  SETUP ï¿½DMA
  * ------------------------------------------*/
-void DMA_setup();
+void DMA_setup(void);
 /*
- * Sets up the µDMA to work with the ADC
+ * Sets up the ï¿½DMA to work with the ADC
  */
+ #define DMA_CH27 27
 
 #endif /* ADCUDMA_H_ */
