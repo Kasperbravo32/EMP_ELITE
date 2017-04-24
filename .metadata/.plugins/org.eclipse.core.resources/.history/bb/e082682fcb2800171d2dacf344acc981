@@ -27,8 +27,7 @@
 #define MALE            1
 #define FEMALE          2
 
-#define UP              0
-#define DOWN            1
+
 // -----------------------------------
 //              Variables
 // -----------------------------------
@@ -61,9 +60,6 @@ void lcd_move_arrow_down();
 
 //moves the arrow/cursor up on the menu
 void lcd_move_arrow_up();
-
-// Moves arrow up or down depending on input, and depending on limits given
-void lcd_move_arrow(int value, int upper_lim, int lower_lim);
 
 //outputs the main menu on the LCD display
 void lcd_menu();

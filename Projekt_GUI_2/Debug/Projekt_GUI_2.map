@@ -1,11 +1,11 @@
 Archive member included because of file (symbol)
 
 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu\libgcc.a(_arm_addsubdf3.o)
-                              ./menu_handler.o (__aeabi_dsub)
+                              ./menu_handler.o (__aeabi_i2d)
 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu\libgcc.a(_arm_muldivdf3.o)
                               ./menu_handler.o (__aeabi_dmul)
 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu\libgcc.a(_arm_cmpdf2.o)
-                              ./menu_handler.o (__aeabi_dcmplt)
+                              ./menu_handler.o (__aeabi_dcmpge)
 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu\libgcc.a(_arm_fixdfsi.o)
                               ./menu_handler.o (__aeabi_d2iz)
 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-exit.o)
@@ -75,7 +75,7 @@ LOAD ./tm4c123gh6pm_startup_ccs_gcc.o
 .vtable
  *(.vtable)
 
-.text           0x00000270     0x2ff8
+.text           0x00000270     0x2e7c
  CREATE_OBJECT_SYMBOLS
  *(.text)
  .text          0x00000270        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crti.o
@@ -194,233 +194,229 @@ LOAD ./tm4c123gh6pm_startup_ccs_gcc.o
  .text.main     0x00001278      0x114 ./main.o
                 0x00001278                main
  .text.handle_click
-                0x0000138c      0x244 ./menu_handler.o
+                0x0000138c      0x1f4 ./menu_handler.o
                 0x0000138c                handle_click
  .text.handle_keypad
-                0x000015d0       0x14 ./menu_handler.o
-                0x000015d0                handle_keypad
- .text.lcd_move_arrow_down
-                0x000015e4      0x11c ./menu_handler.o
-                0x000015e4                lcd_move_arrow_down
- .text.lcd_move_arrow_up
-                0x00001700      0x11c ./menu_handler.o
-                0x00001700                lcd_move_arrow_up
+                0x00001580       0x14 ./menu_handler.o
+                0x00001580                handle_keypad
+ .text.lcd_move_arrow
+                0x00001594      0x184 ./menu_handler.o
+                0x00001594                lcd_move_arrow
  .text.lcd_menu
-                0x0000181c       0x94 ./menu_handler.o
-                0x0000181c                lcd_menu
+                0x00001718       0x94 ./menu_handler.o
+                0x00001718                lcd_menu
  .text.lcd_enter
-                0x000018b0       0x40 ./menu_handler.o
-                0x000018b0                lcd_enter
+                0x000017ac       0x40 ./menu_handler.o
+                0x000017ac                lcd_enter
  .text.return_menu
-                0x000018f0       0x90 ./menu_handler.o
-                0x000018f0                return_menu
+                0x000017ec       0x90 ./menu_handler.o
+                0x000017ec                return_menu
  .text.enter_pulse
-                0x00001980       0x90 ./menu_handler.o
-                0x00001980                enter_pulse
+                0x0000187c       0x90 ./menu_handler.o
+                0x0000187c                enter_pulse
  .text.enter_FFT
-                0x00001a10       0x20 ./menu_handler.o
-                0x00001a10                enter_FFT
+                0x0000190c       0x20 ./menu_handler.o
+                0x0000190c                enter_FFT
  .text.enter_details
-                0x00001a30       0x24 ./menu_handler.o
-                0x00001a30                enter_details
+                0x0000192c       0x24 ./menu_handler.o
+                0x0000192c                enter_details
  .text.enter_settings
-                0x00001a54       0x20 ./menu_handler.o
-                0x00001a54                enter_settings
+                0x00001950       0x20 ./menu_handler.o
+                0x00001950                enter_settings
  .text.pause_screen
-                0x00001a74       0xa4 ./menu_handler.o
-                0x00001a74                pause_screen
+                0x00001970       0xa4 ./menu_handler.o
+                0x00001970                pause_screen
  .text.ADC_collect
-                0x00001b18       0x4c ./menu_handler.o
-                0x00001b18                ADC_collect
- *fill*         0x00001b64        0x4 
+                0x00001a14       0x4c ./menu_handler.o
+                0x00001a14                ADC_collect
  .text.ADC_PULSE
-                0x00001b68      0x338 ./menu_handler.o
-                0x00001b68                ADC_PULSE
- .text.itostr   0x00001ea0       0x48 ./menu_handler.o
-                0x00001ea0                itostr
- .text.ADC_LED  0x00001ee8       0x70 ./menu_handler.o
-                0x00001ee8                ADC_LED
- .text.ADC_AGE  0x00001f58        0xc ./menu_handler.o
-                0x00001f58                ADC_AGE
+                0x00001a60      0x2c4 ./menu_handler.o
+                0x00001a60                ADC_PULSE
+ .text.itostr   0x00001d24       0x48 ./menu_handler.o
+                0x00001d24                itostr
+ .text.ADC_LED  0x00001d6c       0x70 ./menu_handler.o
+                0x00001d6c                ADC_LED
+ .text.ADC_AGE  0x00001ddc        0xc ./menu_handler.o
+                0x00001ddc                ADC_AGE
  .text.enter_gender
-                0x00001f64       0x64 ./menu_handler.o
-                0x00001f64                enter_gender
+                0x00001de8       0x64 ./menu_handler.o
+                0x00001de8                enter_gender
  .text.enter_age
-                0x00001fc8       0x60 ./menu_handler.o
-                0x00001fc8                enter_age
+                0x00001e4c       0x60 ./menu_handler.o
+                0x00001e4c                enter_age
  .text.update_state
-                0x00002028      0x118 ./menu_handler.o
-                0x00002028                update_state
+                0x00001eac      0x118 ./menu_handler.o
+                0x00001eac                update_state
  .text.retrieve_id
-                0x00002140       0x20 ./rtcs.o
-                0x00002140                retrieve_id
+                0x00001fc4       0x20 ./rtcs.o
+                0x00001fc4                retrieve_id
  .text.i_am_alive
-                0x00002160       0x5c ./rtcs.o
-                0x00002160                i_am_alive
+                0x00001fe4       0x5c ./rtcs.o
+                0x00001fe4                i_am_alive
  .text.set_state
-                0x000021bc       0x34 ./rtcs.o
-                0x000021bc                set_state
- .text.wait     0x000021f0       0x48 ./rtcs.o
-                0x000021f0                wait
+                0x00002040       0x34 ./rtcs.o
+                0x00002040                set_state
+ .text.wait     0x00002074       0x48 ./rtcs.o
+                0x00002074                wait
  .text.wait_sem
-                0x00002238       0xf8 ./rtcs.o
-                0x00002238                wait_sem
- .text.signal   0x00002330       0x40 ./rtcs.o
-                0x00002330                signal
+                0x000020bc       0xf8 ./rtcs.o
+                0x000020bc                wait_sem
+ .text.signal   0x000021b4       0x40 ./rtcs.o
+                0x000021b4                signal
  .text.preset_sem
-                0x00002370       0x34 ./rtcs.o
-                0x00002370                preset_sem
+                0x000021f4       0x34 ./rtcs.o
+                0x000021f4                preset_sem
  .text.open_queue
-                0x000023a4       0x90 ./rtcs.o
-                0x000023a4                open_queue
+                0x00002228       0x90 ./rtcs.o
+                0x00002228                open_queue
  .text.put_queue
-                0x00002434       0xc4 ./rtcs.o
-                0x00002434                put_queue
+                0x000022b8       0xc4 ./rtcs.o
+                0x000022b8                put_queue
  .text.get_queue
-                0x000024f8       0xc4 ./rtcs.o
-                0x000024f8                get_queue
+                0x0000237c       0xc4 ./rtcs.o
+                0x0000237c                get_queue
  .text.start_task
-                0x000025bc       0x84 ./rtcs.o
-                0x000025bc                start_task
+                0x00002440       0x84 ./rtcs.o
+                0x00002440                start_task
  .text.init_rtcs
-                0x00002640       0x48 ./rtcs.o
-                0x00002640                init_rtcs
+                0x000024c4       0x48 ./rtcs.o
+                0x000024c4                init_rtcs
  .text.schedule
-                0x00002688      0x20c ./rtcs.o
-                0x00002688                schedule
- .text.SET_LED  0x00002894       0x84 ./set_color.o
-                0x00002894                SET_LED
+                0x0000250c      0x20c ./rtcs.o
+                0x0000250c                schedule
+ .text.SET_LED  0x00002718       0x84 ./set_color.o
+                0x00002718                SET_LED
  .text.gpio_setup
-                0x00002918       0x6c ./setup.o
-                0x00002918                gpio_setup
+                0x0000279c       0x6c ./setup.o
+                0x0000279c                gpio_setup
  .text.LCD_setup
-                0x00002984       0x94 ./setup.o
-                0x00002984                LCD_setup
+                0x00002808       0x94 ./setup.o
+                0x00002808                LCD_setup
  .text.wait2_mil
-                0x00002a18       0x2c ./setup.o
-                0x00002a18                wait2_mil
+                0x0000289c       0x2c ./setup.o
+                0x0000289c                wait2_mil
  .text.sw1_clicked
-                0x00002a44       0x24 ./switches.o
-                0x00002a44                sw1_clicked
+                0x000028c8       0x24 ./switches.o
+                0x000028c8                sw1_clicked
  .text.sw2_clicked
-                0x00002a68       0x24 ./switches.o
-                0x00002a68                sw2_clicked
+                0x000028ec       0x24 ./switches.o
+                0x000028ec                sw2_clicked
  .text.determine_click
-                0x00002a8c      0x228 ./switches.o
-                0x00002a8c                determine_click
+                0x00002910      0x228 ./switches.o
+                0x00002910                determine_click
  .text.systick_handler
-                0x00002cb4       0x24 ./systick.o
-                0x00002cb4                systick_handler
+                0x00002b38       0x24 ./systick.o
+                0x00002b38                systick_handler
  .text.enable_global_int
-                0x00002cd8       0x10 ./systick.o
-                0x00002cd8                enable_global_int
+                0x00002b5c       0x10 ./systick.o
+                0x00002b5c                enable_global_int
  .text.disable_global_int
-                0x00002ce8       0x10 ./systick.o
-                0x00002ce8                disable_global_int
+                0x00002b6c       0x10 ./systick.o
+                0x00002b6c                disable_global_int
  .text.init_systick
-                0x00002cf8       0x84 ./systick.o
-                0x00002cf8                init_systick
+                0x00002b7c       0x84 ./systick.o
+                0x00002b7c                init_systick
  .text.ResetISR
-                0x00002d7c       0x68 ./tm4c123gh6pm_startup_ccs_gcc.o
-                0x00002d7c                ResetISR
- .text.NmiSR    0x00002de4        0x8 ./tm4c123gh6pm_startup_ccs_gcc.o
+                0x00002c00       0x68 ./tm4c123gh6pm_startup_ccs_gcc.o
+                0x00002c00                ResetISR
+ .text.NmiSR    0x00002c68        0x8 ./tm4c123gh6pm_startup_ccs_gcc.o
  .text.FaultISR
-                0x00002dec        0x8 ./tm4c123gh6pm_startup_ccs_gcc.o
+                0x00002c70        0x8 ./tm4c123gh6pm_startup_ccs_gcc.o
  .text.IntDefaultHandler
-                0x00002df4        0x8 ./tm4c123gh6pm_startup_ccs_gcc.o
- .text.exit     0x00002dfc       0x20 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-exit.o)
-                0x00002dfc                exit
+                0x00002c78        0x8 ./tm4c123gh6pm_startup_ccs_gcc.o
+ .text.exit     0x00002c80       0x20 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-exit.o)
+                0x00002c80                exit
  .text.__libc_init_array
-                0x00002e1c       0x50 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-init.o)
-                0x00002e1c                __libc_init_array
- .text.__itoa   0x00002e6c       0x30 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-itoa.o)
-                0x00002e6c                __itoa
- .text.itoa     0x00002e9c        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-itoa.o)
-                0x00002e9c                itoa
- .text.memset   0x00002ea0       0x9c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-memset.o)
-                0x00002ea0                memset
- .text.strcpy   0x00002f3c       0xbc c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-strcpy.o)
-                0x00002f3c                strcpy
- .text.__utoa   0x00002ff8       0x80 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-utoa.o)
-                0x00002ff8                __utoa
- .text.utoa     0x00003078        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-utoa.o)
-                0x00003078                utoa
+                0x00002ca0       0x50 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-init.o)
+                0x00002ca0                __libc_init_array
+ .text.__itoa   0x00002cf0       0x30 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-itoa.o)
+                0x00002cf0                __itoa
+ .text.itoa     0x00002d20        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-itoa.o)
+                0x00002d20                itoa
+ .text.memset   0x00002d24       0x9c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-memset.o)
+                0x00002d24                memset
+ .text.strcpy   0x00002dc0       0xbc c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-strcpy.o)
+                0x00002dc0                strcpy
+ .text.__utoa   0x00002e7c       0x80 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-utoa.o)
+                0x00002e7c                __utoa
+ .text.utoa     0x00002efc        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-utoa.o)
+                0x00002efc                utoa
  .text.startup.register_fini
-                0x0000307c       0x14 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__call_atexit.o)
+                0x00002f00       0x14 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__call_atexit.o)
  .text.__call_exitprocs
-                0x00003090       0xd4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__call_atexit.o)
-                0x00003090                __call_exitprocs
- .text.atexit   0x00003164        0xc c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-atexit.o)
-                0x00003164                atexit
+                0x00002f14       0xd4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__call_atexit.o)
+                0x00002f14                __call_exitprocs
+ .text.atexit   0x00002fe8        0xc c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-atexit.o)
+                0x00002fe8                atexit
  .text.__libc_fini_array
-                0x00003170       0x2c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-fini.o)
-                0x00003170                __libc_fini_array
+                0x00002ff4       0x2c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-fini.o)
+                0x00002ff4                __libc_fini_array
  .text.__register_exitproc
-                0x0000319c       0xa4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__atexit.o)
-                0x0000319c                __register_exitproc
- .text._exit    0x00003240        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(_exit.o)
-                0x00003240                _exit
-                0x00003244                . = ALIGN (0x4)
+                0x00003020       0xa4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__atexit.o)
+                0x00003020                __register_exitproc
+ .text._exit    0x000030c4        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(_exit.o)
+                0x000030c4                _exit
+                0x000030c8                . = ALIGN (0x4)
  *(.ctors)
-                0x00003244                . = ALIGN (0x4)
+                0x000030c8                . = ALIGN (0x4)
  *(.dtors)
-                0x00003244                . = ALIGN (0x4)
-                0x00003244                __init_array_start = .
+                0x000030c8                . = ALIGN (0x4)
+                0x000030c8                __init_array_start = .
  *(.init_array*)
- .init_array    0x00003244        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
+ .init_array    0x000030c8        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
  .init_array.00000
-                0x00003248        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__call_atexit.o)
-                0x0000324c                __init_array_end = .
+                0x000030cc        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__call_atexit.o)
+                0x000030d0                __init_array_end = .
  *(.init)
- .init          0x0000324c        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crti.o
-                0x0000324c                _init
- .init          0x00003250        0x8 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtn.o
+ .init          0x000030d0        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crti.o
+                0x000030d0                _init
+ .init          0x000030d4        0x8 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtn.o
  *(.fini*)
- .fini          0x00003258        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crti.o
-                0x00003258                _fini
- .fini_array    0x0000325c        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
- .fini          0x00003260        0x8 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtn.o
-                0x00003268                PROVIDE (__etext, .)
-                0x00003268                PROVIDE (_etext, .)
-                0x00003268                PROVIDE (etext, .)
+ .fini          0x000030dc        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crti.o
+                0x000030dc                _fini
+ .fini_array    0x000030e0        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
+ .fini          0x000030e4        0x8 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtn.o
+                0x000030ec                PROVIDE (__etext, .)
+                0x000030ec                PROVIDE (_etext, .)
+                0x000030ec                PROVIDE (etext, .)
 
-.glue_7         0x00003268        0x0
+.glue_7         0x000030ec        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x00003268        0x0
+.glue_7t        0x000030ec        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x00003268        0x0
+.vfp11_veneer   0x000030ec        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x00003268        0x0
+.v4_bx          0x000030ec        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00003268        0x0
+.iplt           0x000030ec        0x0
  .iplt          0x00000000        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
 
-.rodata         0x00003268       0xfc
+.rodata         0x000030ec       0xfc
  *(.rodata)
- .rodata        0x00003268       0x90 ./menu_handler.o
+ .rodata        0x000030ec       0x90 ./menu_handler.o
  *(.rodata*)
  .rodata.menu_strs
-                0x000032f8       0x3c ./menu_handler.o
+                0x0000317c       0x3c ./menu_handler.o
  .rodata.str1.4
-                0x00003334        0x2 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-impure.o)
- *fill*         0x00003336        0x2 
+                0x000031b8        0x2 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-impure.o)
+ *fill*         0x000031ba        0x2 
  .rodata._global_impure_ptr
-                0x00003338        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-impure.o)
-                0x00003338                _global_impure_ptr
+                0x000031bc        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-impure.o)
+                0x000031bc                _global_impure_ptr
  .rodata.str1.4
-                0x0000333c       0x28 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-utoa.o)
+                0x000031c0       0x28 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-utoa.o)
                                  0x25 (size before relaxing)
 
-.eh_frame       0x00003364        0x4
- .eh_frame      0x00003364        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
- .eh_frame      0x00003364        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtend.o
+.eh_frame       0x000031e8        0x4
+ .eh_frame      0x000031e8        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
+ .eh_frame      0x000031e8        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtend.o
 
-.data           0x20000000      0x514 load address 0x00003368
-                0x00003368                __data_load__ = LOADADDR (.data)
+.data           0x20000000      0x514 load address 0x000031ec
+                0x000031ec                __data_load__ = LOADADDR (.data)
                 0x20000000                __data_start__ = .
  *(.data)
  .data          0x20000000        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crti.o
@@ -473,7 +469,14 @@ LOAD ./tm4c123gh6pm_startup_ccs_gcc.o
  .data.arrow_pos
                 0x2000002c        0x4 ./menu_handler.o
  .data.pulse_threshold
-                0x20000030        0x8 ./menu_handler.o
+                0x20000030        0x4 ./menu_handler.o
+ .data.age_char_1
+                0x20000034        0x1 ./menu_handler.o
+ .data.age_char_2
+                0x20000035        0x1 ./menu_handler.o
+ .data.age_char_3
+                0x20000036        0x1 ./menu_handler.o
+ *fill*         0x20000037        0x1 
  .data.pulse_stat_1
                 0x20000038       0x14 ./menu_handler.o
  .data.pulse_stat_2
@@ -491,25 +494,19 @@ LOAD ./tm4c123gh6pm_startup_ccs_gcc.o
  *fill*         0x200000b5        0x3 
  .data.pulse_status
                 0x200000b8       0x14 ./menu_handler.o
- .data.age_char_1
-                0x200000cc        0x1 ./menu_handler.o
- .data.age_char_2
-                0x200000cd        0x1 ./menu_handler.o
- .data.age_char_3
-                0x200000ce        0x1 ./menu_handler.o
  .data.line_one_char
-                0x200000cf        0x1 ./menu_handler.o
+                0x200000cc        0x1 ./menu_handler.o
  .data.line_two_char
-                0x200000d0        0x1 ./menu_handler.o
+                0x200000cd        0x1 ./menu_handler.o
  .data.line_three_char
-                0x200000d1        0x1 ./menu_handler.o
+                0x200000ce        0x1 ./menu_handler.o
  .data.line_four_char
-                0x200000d2        0x1 ./menu_handler.o
+                0x200000cf        0x1 ./menu_handler.o
  .data.details_line_one_char
-                0x200000d3        0x1 ./menu_handler.o
+                0x200000d0        0x1 ./menu_handler.o
  .data.details_line_two_char
-                0x200000d4        0x1 ./menu_handler.o
- *fill*         0x200000d5        0x3 
+                0x200000d1        0x1 ./menu_handler.o
+ *fill*         0x200000d2        0x6 
  .data.update_state_timer
                 0x200000d8        0x8 ./menu_handler.o
  .data.LED_timer
@@ -522,24 +519,24 @@ LOAD ./tm4c123gh6pm_startup_ccs_gcc.o
                 0x20000514                . = ALIGN (0x4)
                 0x20000514                __data_end__ = .
 
-.jcr            0x20000514        0x4 load address 0x0000387c
+.jcr            0x20000514        0x4 load address 0x00003700
  .jcr           0x20000514        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
  .jcr           0x20000514        0x4 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtend.o
 
-.igot.plt       0x20000518        0x0 load address 0x00003880
+.igot.plt       0x20000518        0x0 load address 0x00003704
  .igot.plt      0x00000000        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
 
-.ARM.exidx      0x00003880        0x8
-                0x00003880                __exidx_start = .
+.ARM.exidx      0x00003704        0x8
+                0x00003704                __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x00003880        0x8 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
-                0x00003888                __exidx_end = .
+ .ARM.exidx     0x00003704        0x8 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
+                0x0000370c                __exidx_end = .
 
-.ARM.extab      0x00003888        0x0
+.ARM.extab      0x0000370c        0x0
  *(.ARM.extab* .gnu.linkonce.armextab.*)
- .ARM.extab     0x00003888        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
+ .ARM.extab     0x0000370c        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
 
-.rel.dyn        0x00003888        0x0
+.rel.dyn        0x0000370c        0x0
  .rel.iplt      0x00000000        0x0 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/fpu/crtbegin.o
 
 .bss            0x20000518      0xc54
@@ -593,12 +590,12 @@ LOAD ./tm4c123gh6pm_startup_ccs_gcc.o
  .bss.SAB_flag  0x20000544        0x4 ./menu_handler.o
  .bss.state_update_LED
                 0x20000548        0x4 ./menu_handler.o
- .bss.pulse_avg
-                0x2000054c        0x4 ./menu_handler.o
  .bss.pulse_avg_arr
-                0x20000550       0x10 ./menu_handler.o
+                0x2000054c       0x10 ./menu_handler.o
  .bss.pulse_tick_arr
-                0x20000560       0x10 ./menu_handler.o
+                0x2000055c       0x10 ./menu_handler.o
+ .bss.pulse_avg
+                0x2000056c        0x4 ./menu_handler.o
  .bss.pulse_ticks
                 0x20000570        0x4 ./menu_handler.o
  .bss.ADC0_result
@@ -741,31 +738,31 @@ OUTPUT(Projekt_GUI_2.out elf32-littlearm)
  .comment       0x00000000       0x71 ./systick.o
  .comment       0x00000000       0x71 ./tm4c123gh6pm_startup_ccs_gcc.o
 
-.debug_info     0x00000000     0x174f
+.debug_info     0x00000000     0x1722
  .debug_info    0x00000000       0xee ./adcudma.o
  .debug_info    0x000000ee      0x26e ./lcd.o
  .debug_info    0x0000035c      0x15d ./main.o
- .debug_info    0x000004b9      0x7ea ./menu_handler.o
- .debug_info    0x00000ca3      0x557 ./rtcs.o
- .debug_info    0x000011fa       0xbd ./set_color.o
- .debug_info    0x000012b7       0xfd ./setup.o
- .debug_info    0x000013b4      0x12a ./switches.o
- .debug_info    0x000014de       0xfb ./systick.o
- .debug_info    0x000015d9      0x176 ./tm4c123gh6pm_startup_ccs_gcc.o
+ .debug_info    0x000004b9      0x7bd ./menu_handler.o
+ .debug_info    0x00000c76      0x557 ./rtcs.o
+ .debug_info    0x000011cd       0xbd ./set_color.o
+ .debug_info    0x0000128a       0xfd ./setup.o
+ .debug_info    0x00001387      0x12a ./switches.o
+ .debug_info    0x000014b1       0xfb ./systick.o
+ .debug_info    0x000015ac      0x176 ./tm4c123gh6pm_startup_ccs_gcc.o
 
-.debug_abbrev   0x00000000      0x704
+.debug_abbrev   0x00000000      0x6e0
  .debug_abbrev  0x00000000       0x70 ./adcudma.o
  .debug_abbrev  0x00000070       0xb6 ./lcd.o
  .debug_abbrev  0x00000126       0x86 ./main.o
- .debug_abbrev  0x000001ac      0x14c ./menu_handler.o
- .debug_abbrev  0x000002f8      0x16a ./rtcs.o
- .debug_abbrev  0x00000462       0x5b ./set_color.o
- .debug_abbrev  0x000004bd       0x96 ./setup.o
- .debug_abbrev  0x00000553       0x70 ./switches.o
- .debug_abbrev  0x000005c3       0x77 ./systick.o
- .debug_abbrev  0x0000063a       0xca ./tm4c123gh6pm_startup_ccs_gcc.o
+ .debug_abbrev  0x000001ac      0x128 ./menu_handler.o
+ .debug_abbrev  0x000002d4      0x16a ./rtcs.o
+ .debug_abbrev  0x0000043e       0x5b ./set_color.o
+ .debug_abbrev  0x00000499       0x96 ./setup.o
+ .debug_abbrev  0x0000052f       0x70 ./switches.o
+ .debug_abbrev  0x0000059f       0x77 ./systick.o
+ .debug_abbrev  0x00000616       0xca ./tm4c123gh6pm_startup_ccs_gcc.o
 
-.debug_aranges  0x00000000      0x2f0
+.debug_aranges  0x00000000      0x2e8
  .debug_aranges
                 0x00000000       0x30 ./adcudma.o
  .debug_aranges
@@ -773,85 +770,85 @@ OUTPUT(Projekt_GUI_2.out elf32-littlearm)
  .debug_aranges
                 0x000000a8       0x20 ./main.o
  .debug_aranges
-                0x000000c8       0xb8 ./menu_handler.o
+                0x000000c8       0xb0 ./menu_handler.o
  .debug_aranges
-                0x00000180       0x80 ./rtcs.o
+                0x00000178       0x80 ./rtcs.o
  .debug_aranges
-                0x00000200       0x20 ./set_color.o
+                0x000001f8       0x20 ./set_color.o
  .debug_aranges
-                0x00000220       0x30 ./setup.o
+                0x00000218       0x30 ./setup.o
  .debug_aranges
-                0x00000250       0x30 ./switches.o
+                0x00000248       0x30 ./switches.o
  .debug_aranges
-                0x00000280       0x38 ./systick.o
+                0x00000278       0x38 ./systick.o
  .debug_aranges
-                0x000002b8       0x38 ./tm4c123gh6pm_startup_ccs_gcc.o
+                0x000002b0       0x38 ./tm4c123gh6pm_startup_ccs_gcc.o
 
-.debug_ranges   0x00000000      0x250
+.debug_ranges   0x00000000      0x248
  .debug_ranges  0x00000000       0x20 ./adcudma.o
  .debug_ranges  0x00000020       0x68 ./lcd.o
  .debug_ranges  0x00000088       0x10 ./main.o
- .debug_ranges  0x00000098       0xa8 ./menu_handler.o
- .debug_ranges  0x00000140       0x70 ./rtcs.o
- .debug_ranges  0x000001b0       0x10 ./set_color.o
- .debug_ranges  0x000001c0       0x20 ./setup.o
- .debug_ranges  0x000001e0       0x20 ./switches.o
- .debug_ranges  0x00000200       0x28 ./systick.o
- .debug_ranges  0x00000228       0x28 ./tm4c123gh6pm_startup_ccs_gcc.o
+ .debug_ranges  0x00000098       0xa0 ./menu_handler.o
+ .debug_ranges  0x00000138       0x70 ./rtcs.o
+ .debug_ranges  0x000001a8       0x10 ./set_color.o
+ .debug_ranges  0x000001b8       0x20 ./setup.o
+ .debug_ranges  0x000001d8       0x20 ./switches.o
+ .debug_ranges  0x000001f8       0x28 ./systick.o
+ .debug_ranges  0x00000220       0x28 ./tm4c123gh6pm_startup_ccs_gcc.o
 
-.debug_line     0x00000000     0x1199
+.debug_line     0x00000000     0x1159
  .debug_line    0x00000000      0x19e ./adcudma.o
  .debug_line    0x0000019e      0x214 ./lcd.o
  .debug_line    0x000003b2      0x130 ./main.o
- .debug_line    0x000004e2      0x3e5 ./menu_handler.o
- .debug_line    0x000008c7      0x24e ./rtcs.o
- .debug_line    0x00000b15      0x122 ./set_color.o
- .debug_line    0x00000c37      0x13d ./setup.o
- .debug_line    0x00000d74      0x17a ./switches.o
- .debug_line    0x00000eee      0x153 ./systick.o
- .debug_line    0x00001041      0x158 ./tm4c123gh6pm_startup_ccs_gcc.o
+ .debug_line    0x000004e2      0x3a5 ./menu_handler.o
+ .debug_line    0x00000887      0x24e ./rtcs.o
+ .debug_line    0x00000ad5      0x122 ./set_color.o
+ .debug_line    0x00000bf7      0x13d ./setup.o
+ .debug_line    0x00000d34      0x17a ./switches.o
+ .debug_line    0x00000eae      0x153 ./systick.o
+ .debug_line    0x00001001      0x158 ./tm4c123gh6pm_startup_ccs_gcc.o
 
-.debug_str      0x00000000      0x83a
+.debug_str      0x00000000      0x837
  .debug_str     0x00000000      0x1b9 ./adcudma.o
                                 0x1f6 (size before relaxing)
  .debug_str     0x000001b9       0x8d ./lcd.o
                                 0x25b (size before relaxing)
  .debug_str     0x00000246       0x75 ./main.o
                                 0x244 (size before relaxing)
- .debug_str     0x000002bb      0x2d5 ./menu_handler.o
-                                0x513 (size before relaxing)
- .debug_str     0x00000590      0x119 ./rtcs.o
+ .debug_str     0x000002bb      0x2d2 ./menu_handler.o
+                                0x510 (size before relaxing)
+ .debug_str     0x0000058d      0x119 ./rtcs.o
                                 0x322 (size before relaxing)
- .debug_str     0x000006a9       0x17 ./set_color.o
+ .debug_str     0x000006a6       0x17 ./set_color.o
                                 0x1e6 (size before relaxing)
- .debug_str     0x000006c0       0x2a ./setup.o
+ .debug_str     0x000006bd       0x2a ./setup.o
                                 0x1f8 (size before relaxing)
- .debug_str     0x000006ea       0x60 ./switches.o
+ .debug_str     0x000006e7       0x60 ./switches.o
                                 0x230 (size before relaxing)
- .debug_str     0x0000074a       0x4f ./systick.o
+ .debug_str     0x00000747       0x4f ./systick.o
                                 0x21f (size before relaxing)
- .debug_str     0x00000799       0xa1 ./tm4c123gh6pm_startup_ccs_gcc.o
+ .debug_str     0x00000796       0xa1 ./tm4c123gh6pm_startup_ccs_gcc.o
                                 0x260 (size before relaxing)
 
-.debug_frame    0x00000000      0xb4c
+.debug_frame    0x00000000      0xb34
  .debug_frame   0x00000000       0x7c ./adcudma.o
  .debug_frame   0x0000007c      0x1b8 ./lcd.o
  .debug_frame   0x00000234       0x2c ./main.o
- .debug_frame   0x00000260      0x284 ./menu_handler.o
- .debug_frame   0x000004e4      0x1fc ./rtcs.o
- .debug_frame   0x000006e0       0x38 ./set_color.o
- .debug_frame   0x00000718       0x88 ./setup.o
- .debug_frame   0x000007a0       0x78 ./switches.o
- .debug_frame   0x00000818       0x90 ./systick.o
- .debug_frame   0x000008a8       0x7c ./tm4c123gh6pm_startup_ccs_gcc.o
- .debug_frame   0x00000924       0x28 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-exit.o)
- .debug_frame   0x0000094c       0x2c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-init.o)
- .debug_frame   0x00000978       0x3c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-itoa.o)
- .debug_frame   0x000009b4       0x34 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-memset.o)
- .debug_frame   0x000009e8       0x20 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-strcpy.o)
- .debug_frame   0x00000a08       0x4c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-utoa.o)
- .debug_frame   0x00000a54       0x50 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__call_atexit.o)
- .debug_frame   0x00000aa4       0x20 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-atexit.o)
- .debug_frame   0x00000ac4       0x34 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-fini.o)
- .debug_frame   0x00000af8       0x34 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__atexit.o)
- .debug_frame   0x00000b2c       0x20 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(_exit.o)
+ .debug_frame   0x00000260      0x26c ./menu_handler.o
+ .debug_frame   0x000004cc      0x1fc ./rtcs.o
+ .debug_frame   0x000006c8       0x38 ./set_color.o
+ .debug_frame   0x00000700       0x88 ./setup.o
+ .debug_frame   0x00000788       0x78 ./switches.o
+ .debug_frame   0x00000800       0x90 ./systick.o
+ .debug_frame   0x00000890       0x7c ./tm4c123gh6pm_startup_ccs_gcc.o
+ .debug_frame   0x0000090c       0x28 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-exit.o)
+ .debug_frame   0x00000934       0x2c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-init.o)
+ .debug_frame   0x00000960       0x3c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-itoa.o)
+ .debug_frame   0x0000099c       0x34 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-memset.o)
+ .debug_frame   0x000009d0       0x20 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-strcpy.o)
+ .debug_frame   0x000009f0       0x4c c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-utoa.o)
+ .debug_frame   0x00000a3c       0x50 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00000a8c       0x20 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-atexit.o)
+ .debug_frame   0x00000aac       0x34 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-fini.o)
+ .debug_frame   0x00000ae0       0x34 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libg.a(lib_a-__atexit.o)
+ .debug_frame   0x00000b14       0x20 c:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(_exit.o)

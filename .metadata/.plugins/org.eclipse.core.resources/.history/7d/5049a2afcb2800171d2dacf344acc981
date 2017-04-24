@@ -296,8 +296,127 @@ void handle_keypad(INT8U value)
 
 
 /* --------------------------------------------
- *              Move cursor
+ *              Move cursor down
  * ------------------------------------------*/
+void lcd_move_arrow_down()
+{
+    arrow_pos++;
+    if(arrow_pos >= 5)
+        arrow_pos = 1;
+    switch(arrow_pos)
+    {
+    case 1:
+        line_one_char   = 0x7E;
+        line_two_char   = ' ';
+        line_three_char = ' ';
+        line_four_char  = ' ';
+
+        lcd_instruct(LCD_LINE_FOUR);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_ONE);
+        lcd_data(0x7E);
+        break;
+
+    case 2:
+        line_one_char   = ' ';
+        line_two_char   = 0x7E;
+        line_three_char = ' ';
+        line_four_char  = ' ';
+
+        lcd_instruct(LCD_LINE_ONE);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_TWO);
+        lcd_data(0x7E);
+        break;
+
+    case 3:
+        line_one_char   = ' ';
+        line_two_char   = ' ';
+        line_three_char = 0x7E;
+        line_four_char  = ' ';
+
+        lcd_instruct(LCD_LINE_TWO);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_THREE);
+        lcd_data(0x7E);
+        break;
+
+    case 4:
+        line_one_char   = ' ';
+        line_two_char   = ' ';
+        line_three_char = ' ';
+        line_four_char  = 0x7E;
+
+        lcd_instruct(LCD_LINE_THREE);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_FOUR);
+        lcd_data(0x7E);
+        break;
+    }
+}
+
+
+/* --------------------------------------------
+ *              Move cursor up
+ * ------------------------------------------*/
+void lcd_move_arrow_up()
+{
+    arrow_pos--;
+    if(arrow_pos <= 0)
+        arrow_pos = 4;
+    switch(arrow_pos)
+    {
+    case 1:
+        line_one_char   = 0x7E;
+        line_two_char   = ' ';
+        line_three_char = ' ';
+        line_four_char  = ' ';
+
+        lcd_instruct(LCD_LINE_TWO);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_ONE);
+        lcd_data(0x7E);
+        break;
+
+    case 2:
+        line_one_char   = ' ';
+        line_two_char   = 0x7E;
+        line_three_char = ' ';
+        line_four_char  = ' ';
+
+        lcd_instruct(LCD_LINE_THREE);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_TWO);
+        lcd_data(0x7E);
+        break;
+
+    case 3:
+        line_one_char   = ' ';
+        line_two_char   = ' ';
+        line_three_char = 0x7E;
+        line_four_char  = ' ';
+
+        lcd_instruct(LCD_LINE_FOUR);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_THREE);
+        lcd_data(0x7E);
+        break;
+
+    case 4:
+        line_one_char   = ' ';
+        line_two_char   = ' ';
+        line_three_char = ' ';
+        line_four_char  = 0x7E;
+
+        lcd_instruct(LCD_LINE_ONE);
+        lcd_data(' ');
+        lcd_instruct(LCD_LINE_FOUR);
+        lcd_data(0x7E);
+        break;
+    }
+}
+
+
 void lcd_move_arrow(int value, int upper_lim, int lower_lim)
 {
     if (value == DOWN)
