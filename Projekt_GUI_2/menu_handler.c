@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 #include <string.h>
+#include "setup.h"
 #include "tm4c123gh6pm.h"
 #include "lcd.h"
 #include "switches.h"
@@ -30,16 +31,12 @@ static int current_state             = MAIN;
 static int current_gender            = MALE;
 static int current_age               = 20;
 static int pulse_trigger             = 0;
-static int pulse_counter_min         = 0;
-static int pulse_counter             = 0;
 static int age_chars                 = 0;
 static int arrow_pos                 = 1;
 static int SAB_flag                  = 0;
 
 static int state_update_LED          = 0;
 
-static long int pulse_calc           = 0;
-static long int old_pulse_calc       = 0;
 static long int pulse_avg       = 0;
 static long int pulse_avg_arr[4];
 static long int pulse_tick_arr[4];
@@ -51,7 +48,6 @@ static long int ADC1_result          = 0;
 static double pulse_threshold        = 2650;
 
 static char current_pulse_status[20];
-static char pulse_string[20]         = "000";
 static char pulse_stat_1[20]         = "Very Low Pulse!";
 static char pulse_stat_2[20]         = "Low Pulse";
 static char pulse_stat_3[20]         = "O.K.";
@@ -61,10 +57,7 @@ static char pulse_stat_SAB[20]       = "Skipped a beat!";
 static char pulse_str[5]             = "0000";
 static char pulse_status[20]         = "Very Low Pulse!";
 
-static char char_one                 = '1';
-static char char_two                 = '2';
-static char char_three               = '3';
-static char char_four                = '4';
+
 static char age_char_1               = ' ';
 static char age_char_2               = ' ';
 static char age_char_3               = ' ';
@@ -641,7 +634,7 @@ void ADC_PULSE(int value)
         pulse_trigger = 1;
         pulse_ticks++;
 
-        pulse_calc = (60.0 / (0.005*pulse_ticks));
+        //pulse_calc = (60.0 / (0.005*pulse_ticks));
 
         pulse_tick_arr[0] = pulse_tick_arr[1];
         pulse_tick_arr[1] = pulse_tick_arr[2];
@@ -649,7 +642,7 @@ void ADC_PULSE(int value)
 
         pulse_avg_arr[0] = pulse_avg_arr[1];
         pulse_avg_arr[1] = pulse_avg_arr[2];
-        pulse_avg_arr[2] = pulse_calc;
+        pulse_avg_arr[2] = (60.0 / (0.005 * pulse_ticks));
 
         if (pulse_tick_arr[2] >= 1.8*pulse_tick_arr[1])
         {

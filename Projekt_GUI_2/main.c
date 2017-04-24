@@ -33,7 +33,7 @@ static   INT64U pause_screen_timer = TIMER_1000;
 static   INT8U  pause_screen_on    = 0;
 static   int    adc_pin            = SETUP_PB4;
 
-
+//testelesteleste
 // --------------------------------------
 //                Main
 // --------------------------------------

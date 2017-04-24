@@ -1,0 +1,35 @@
+
+**** Build of configuration Debug for project Projekt_GUI_2 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../menu_handler.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
+../menu_handler.c: In function 'handle_click':
+../menu_handler.c:117:17: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
+                 lcd_instruct(LCD_LINE_THREE);
+                 ^
+../menu_handler.c: In function 'lcd_menu':
+../menu_handler.c:446:9: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
+         lcd_data_string(menu_strs[0]);
+         ^
+../menu_handler.c: In function 'itostr':
+../menu_handler.c:723:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
+     itoa(value , pulse_str , 10);
+     ^
+../menu_handler.c: At top level:
+../menu_handler.c:32:12: warning: 'current_age' defined but not used [-Wunused-variable]
+ static int current_age               = 20;
+            ^
+../menu_handler.c:45:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
+ static long int ADC0_result          = 0;
+                 ^
+'Finished building: ../menu_handler.c'
+' '
+'Building target: Projekt_GUI_2.out'
+'Invoking: GNU Linker'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+'Finished building target: Projekt_GUI_2.out'
+' '
+
+**** Build Finished ****
