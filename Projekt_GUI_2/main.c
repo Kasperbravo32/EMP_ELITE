@@ -28,9 +28,10 @@
 volatile INT64U LED_timer          = TIMER_1000;
 static   INT16U alive_timer        = TIMER_500;
 static   INT8U  event              = NO_EVENT;
+static   INT8U  key_event          = NO_EVENT;
 static   INT64U pause_screen_timer = TIMER_1000;
 static   INT8U  pause_screen_on    = 0;
-static   int    adc_pin            = SETUP_PB5;
+static   int    adc_pin            = SETUP_PB4;
 
 
 // --------------------------------------
@@ -48,10 +49,11 @@ int main(void)
     LCD_setup();                            // Setup LCD
     lcd_init();                             // Initialize lcd
     ADC1_setup(adc_pin);                    // Setup ADC1 with PB4 / PB5
-    DMA_setup();                            // Setup UDMA
+    //DMA_setup();                            // Setup UDMA
 
     enable_global_int();                    // Enable global int after setup
     lcd_menu();                             // Out the menu on screen for first time
+
 
     while(1)                                // Start Superloop
     {
@@ -76,8 +78,11 @@ int main(void)
             pause_screen_timer = TIMER_5000;
         }
 
-        event  = determine_click();
-                 handle_click(event);
-                 ADC_collect(adc_pin);
+        event = determine_click();
+                handle_click(event);
+                ADC_collect(adc_pin);
+
+
+
     }
 }

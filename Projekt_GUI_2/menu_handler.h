@@ -15,12 +15,17 @@
 // -----------------------------------
 //              Constants
 // -----------------------------------
-#define MAIN        0
-#define PULS        1
-#define FFT         2
-#define CREDITS     3
-#define SETTINGS    4
-#define PAUSE       5
+#define MAIN            0
+#define PULS            1
+#define FFT             2
+#define DETAILS         3
+#define DETAILS_GENDER 31
+#define DETAILS_AGE    32
+#define SETTINGS        4
+#define PAUSE           5
+
+#define MALE            1
+#define FEMALE          2
 
 
 // -----------------------------------
@@ -32,11 +37,17 @@
 //              Functions
 // -----------------------------------
 
-//
+// Handles click from switch 1/2
 void handle_click(int value);
 
+//
+void handle_keypad(INT8U value);
+
+// function to update current state
+void update_state();
+
 //gets the data from the ADC's
-void ADC_collect();
+void ADC_collect(int value);
 
 //processes data from ADC0
 void ADC_LED(int value);
@@ -63,7 +74,7 @@ void enter_pulse();
 void enter_FFT();
 
 //enters the credits function
-void enter_credits();
+void enter_details();
 
 //enters the settings function
 void enter_settings();
@@ -75,7 +86,16 @@ void pause_screen();
 void return_menu();
 
 // converts an int value to 3 characters
-void itostr(int value);
+void itostr(long int value);
+
+// Allows user to enter gender
+void enter_gender();
+
+// Allows user to enter age
+void enter_age();
+
+// Processes ADC input from potmeter into age
+void ADC_AGE();
 
 // Calculates pulse from ticks
 int process_ticks(long int value);
