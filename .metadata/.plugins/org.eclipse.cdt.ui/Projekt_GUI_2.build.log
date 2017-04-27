@@ -2,48 +2,14 @@
 **** Build of configuration Debug for project Projekt_GUI_2 ****
 
 "C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
-'Building file: ../menu_handler.c'
-'Invoking: GNU Compiler'
-"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"menu_handler.d" -MT"menu_handler.o" -o"menu_handler.o"  "../menu_handler.c"
-../menu_handler.c: In function 'handle_click':
-../menu_handler.c:190:29: warning: pointer targets in passing argument 1 of 'lcd_data_custom' differ in signedness [-Wpointer-sign]
-             lcd_data_custom(lillemand);
-                             ^
-In file included from ../menu_handler.c:17:0:
-../lcd.h:82:6: note: expected 'uint8_t *' but argument is of type 'char *'
- void lcd_data_custom(uint8_t charmap[]);
-      ^
-../menu_handler.c: In function 'lcd_move_arrow':
-../menu_handler.c:340:13: warning: implicit declaration of function 'lcd_instruct' [-Wimplicit-function-declaration]
-             lcd_instruct(LCD_LINE_FOUR);
-             ^
-../menu_handler.c: In function 'lcd_menu':
-../menu_handler.c:427:5: warning: implicit declaration of function 'lcd_data_string' [-Wimplicit-function-declaration]
-     lcd_data_string(menu_strs[0]);
-     ^
-../menu_handler.c: In function 'itostr':
-../menu_handler.c:660:5: warning: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]
-     itoa(value , pulse_str , 10);
-     ^
-../menu_handler.c: At top level:
-../menu_handler.c:36:12: warning: 'current_age' defined but not used [-Wunused-variable]
- static int current_age               = 20;
-            ^
-../menu_handler.c:48:17: warning: 'ADC0_result' defined but not used [-Wunused-variable]
- static long int ADC0_result          = 0;
-                 ^
-../menu_handler.c:80:17: warning: 'details_line_one_char' defined but not used [-Wunused-variable]
- static   INT8U  details_line_one_char  = 0x7E;
-                 ^
-../menu_handler.c:81:17: warning: 'details_line_two_char' defined but not used [-Wunused-variable]
- static   INT8U  details_line_two_char  = ' ';
-                 ^
-'Finished building: ../menu_handler.c'
-' '
 'Building target: Projekt_GUI_2.out'
 'Invoking: GNU Linker'
-"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
-'Finished building target: Projekt_GUI_2.out'
-' '
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -DPART_TM4C123GH6PM -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wl,-Map,"Projekt_GUI_2.map" -o"Projekt_GUI_2.out" "../085c4b66-fec2-4640-88f1-05a374de5979.o" "./adcudma.o" "./lcd.o" "./main.o" "./menu_handler.o" "./rtcs.o" "./set_color.o" "./setup.o" "./switches.o" "./systick.o" "./tm4c123gh6pm_startup_ccs_gcc.o" -Wl,-T"../tm4c123gh6pm.lds"  
+makefile:150: recipe for target 'Projekt_GUI_2.out' failed
+../085c4b66-fec2-4640-88f1-05a374de5979.o: file not recognized: File format not recognized
+collect2.exe: error: ld returned 1 exit status
+gmake[1]: *** [Projekt_GUI_2.out] Error 1
+makefile:146: recipe for target 'all' failed
+gmake: *** [all] Error 2
 
 **** Build Finished ****

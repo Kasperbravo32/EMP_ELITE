@@ -1,5 +1,14 @@
 /*
  * main.c
+ *
+ *      Created on: 26. April. 2017
+ *      Author: Frederik Snedevind
+ *
+ *      4. Semester Spring 2017
+ *      University of Southern Denmark
+ *      Teknisk Fakultet
+ *
+ *      Project - Pulse Analyzer
  */
 // --------------------------------------
 //              Includes
@@ -25,14 +34,14 @@
 //              Variables
 // --------------------------------------
 
-volatile INT16U LED_timer          = TIMER_1000;
-static   INT16U alive_timer        = TIMER_500;
-static   INT8U  event              = NO_EVENT;
 static   INT8U  key_event          = NO_EVENT;
-static   INT64U pause_screen_timer = TIMER_1000;
 static   INT8U  pause_screen_on    = 0;
 static   INT8U  alive_timer_on     = 0;
+volatile INT16U LED_timer          = TIMER_1000;
+static   INT16U alive_timer        = TIMER_500;
+static   INT64U pause_screen_timer = TIMER_1000;
 static   int    adc_pin            = SETUP_PB4;
+static   int    event              = NO_EVENT;
 
 // --------------------------------------
 //                Main
@@ -59,19 +68,12 @@ int main(void)
         while(!ticks);
         ticks--;
 
-        alive_timer = alive_LED(alive_timer);
+        alive_timer        = alive_LED(alive_timer);
+        LED_timer          = LED_OFF(LED_timer);
+        pause_screen_timer = pause_screen_func(pause_screen_timer , pause_screen_on);
 
-        LED_timer   = LED_OFF(LED_timer);
-
-        if(! --pause_screen_timer && pause_screen_on == 1)
-        {
-            pause_screen();
-            pause_screen_timer = TIMER_5000;
-        }
-
-        event = determine_click();
-                handle_click(event);
-                ADC_collect(adc_pin);
-
+        event              = determine_click();
+                             handle_click(event);
+                             ADC_collect(adc_pin);
     }
 }

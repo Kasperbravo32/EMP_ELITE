@@ -63,3 +63,86 @@ int LED_OFF(INT16U timer)
         return timer;
 }
 /****************************** End Of Module *******************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+void calculate_puls();
+
+
+if (pulse_trigger == 0 && value > pulse_threshold)
+{
+    pulse_trigger = 1;
+    pulse_ticks++;
+
+    wide_pulse_ticks++;
+    wide_pulse_check(wide_pulse_ticks);
+    wide_pulse_ticks = 0;
+
+    calculate_puls(pulse_ticks);
+    pulse_ticks = 0;
+}
+
+else if (pulse_trigger == 1 && value > pulse_threshold)
+{
+    pulse_ticks++;
+    wide_pulse_ticks++;
+}
+
+else if (pulse_trigger == 1 && value < pulse_threshold - 100)
+{
+    pulse_ticks++;
+    pulse_trigger = 0;
+}
+
+else if (pulse_trigger == 0 && value < pulse_threshold - 100)
+{
+    pulse_ticks++;
+}
+
+
+void calculate_puls(int value)
+{
+    pulse = (60 / (0.005 * pulse_ticks));
+}
+
+
+
+pulse_tick_arr[0] = pulse_tick_arr[1];
+pulse_tick_arr[1] = pulse_tick_arr[2];
+pulse_tick_arr[2] = pulse_ticks;
+
+if (pulse_tick_arr[2] >= 1.8*pulse_tick_arr[1])
+    SAB_flag = 1;
+
+
+*/
+
+

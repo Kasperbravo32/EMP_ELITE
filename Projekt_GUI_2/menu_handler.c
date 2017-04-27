@@ -22,7 +22,6 @@
 #include "timers.h"
 #include "adcudma.h"
 
-
 // ----------------------------------------------------------------------------------------------------------
 //
 //                                                Variables
@@ -32,22 +31,33 @@
 static int current_state             = MAIN;
 static int current_pulse_state       = OK;
 static int pulse_state               = VLP;
+
 static int current_gender            = MALE;
 static int current_age               = 20;
+
 static int pulse_trigger             = 0;
 static int age_chars                 = 0;
 static int arrow_pos                 = 1;
+
 static int SAB_flag                  = 0;
+static int WP_flag                   = 0;
+
+static int age_int_1                 = 0;
+static int age_int_2                 = 0;
 
 static int state_update_LED          = 1;
 
 static long int pulse_avg_arr[4];
-static long int pulse_tick_arr[4];
 static long int pulse_avg            = 0;
-static long int pulse_ticks          = 0;
 static long int ADC0_result          = 0;
 static long int ADC1_result          = 0;
+
 static long int pulse_threshold      = 2650;            // V = (X / 4096) * 3.3
+static long int wide_pulse_threshold = 25;
+
+static double pulse_ticks            = 0;
+static double wide_pulse_ticks       = 0;
+static double pulse_tick_arr[4];
 
 static char age_char_1               = ' ';
 static char age_char_2               = ' ';
@@ -61,14 +71,6 @@ static char pulse_stat_5[20]         = "Very High Pulse!";
 static char pulse_stat_SAB[20]       = "Skipped a beat!";
 static char pulse_str[5]             = "0000";
 static char pulse_status[20]         = "Very Low Pulse!";
-static char lillemand[8]             ={0b01110,
-                                       0b01010,
-                                       0b01110,
-                                       0b00100,
-                                       0b11111,
-                                       0b00100,
-                                       0b01010,
-                                       0b10001};
 
 const static char menu_strs[4][15]   = {"Pulse" , "FFT" , "Details" , "Settings"};
 
@@ -129,6 +131,10 @@ void handle_click(int value)
             lcd_menu();
             break;
         }
+        else if (current_state == DETAILS_AGE)
+        {
+            age_int_1 = age_int_1 + 1;
+        }
         break;
 
     case SW1_DOUBLE:
@@ -151,6 +157,12 @@ void handle_click(int value)
             enter_age();
         }
 
+        else if (current_state == DETAILS_AGE)
+        {
+            current_age = (age_int_1 * 10) + (age_int_2);
+            lcd_menu();
+        }
+
         break;
 
     case SW1_LONG:
@@ -171,32 +183,33 @@ void handle_click(int value)
         {
             lcd_move_arrow(UP , 1 , 4);
         }
+
+        else if (current_state == PULS)
+        {
+            SAB_flag = 0;
+            WP_flag  = 0;
+        }
+
         else if (current_state == DETAILS_GENDER)
         {
             lcd_move_arrow(UP , 3 , 4);
         }
 
-
+        else if (current_state == DETAILS_AGE)
+        {
+            age_int_2 = age_int_2 + 1;
+        }
         else if (current_state == PAUSE)
         {
             lcd_menu();
         }
-        else if (current_state == PULS)
-        {
-            SAB_flag = 0;
-        }
-        else if (current_state == SETTINGS)
-        {
-            lcd_data_custom(lillemand);
-            lcd_data(0x00);
-        }
-
 
         break;
 
     case SW2_DOUBLE:
         SET_LED(LED_RED | LED_YELLOW);
         LED_timer = TIMER_1000;
+
         if (current_state == MAIN)
         {
             lcd_enter();
@@ -488,10 +501,58 @@ void enter_FFT()
 void enter_details()
 {
     current_state = DETAILS;
-    age_chars = 0;
+    age_int_1 = 0;
+    age_int_2 = 0;
+    age_char_1 = '0';
+    age_char_2 = '0';
+
     enter_gender();
     wait_mil(1);
 
+}
+
+
+/* --------------------------------------------
+ *                  Enter Gender
+ * ------------------------------------------*/
+void enter_gender()
+{
+    current_state = DETAILS_GENDER;
+
+    lcd_instruct(LCD_CLEAR_DISPLAY);
+    wait_mil(1);
+    lcd_data_string("   Gender");
+    lcd_instruct(LCD_LINE_THREE);
+    lcd_data(line_three_char);
+    lcd_data_string("Male");
+    lcd_instruct(LCD_LINE_FOUR);
+    lcd_data(line_four_char);
+    lcd_data_string("Female");
+}
+
+
+/* --------------------------------------------
+ *                  Enter age
+ * ------------------------------------------*/
+void enter_age()
+{
+    if (current_state != DETAILS_AGE)
+    {
+        current_state = DETAILS_AGE;
+
+        lcd_instruct(LCD_CLEAR_DISPLAY);
+        wait_mil(1);
+        lcd_data_string("   Age");
+    }
+
+    lcd_instruct(LCD_LINE_THREE + 3);
+    if (age_char_1 != age_int_1 + '0' || age_char_2 != age_int_2 + '0')
+    {
+        age_char_1 = age_int_1 + '0';
+        age_char_2 = age_int_2 + '0';
+        lcd_data(age_char_1);
+        lcd_data(age_char_2);
+    }
 }
 
 
@@ -562,12 +623,15 @@ void ADC_collect(int value)
  * ------------------------------------------*/
 void ADC_PULSE(int value)
 {
+
     if (pulse_trigger == 0 && value > pulse_threshold)
     {
         pulse_trigger = 1;
         pulse_ticks++;
 
-        //pulse_calc = (60.0 / (0.005*pulse_ticks));
+        wide_pulse_ticks++;
+        wide_pulse_check(wide_pulse_ticks);
+        wide_pulse_ticks = 0;
 
         pulse_tick_arr[0] = pulse_tick_arr[1];
         pulse_tick_arr[1] = pulse_tick_arr[2];
@@ -637,6 +701,7 @@ void ADC_PULSE(int value)
     else if (pulse_trigger == 1 && value > pulse_threshold)
     {
         pulse_ticks++;
+        wide_pulse_ticks++;
     }
 
     else if (pulse_trigger == 1 && value < pulse_threshold-100)
@@ -686,52 +751,6 @@ void ADC_LED(int value)
 
 }
 
-// --------------------------------------------
-//               Potmeter Age
-// --------------------------------------------
-void ADC_AGE()
-{
-
-}
-
-/* --------------------------------------------
- *                  Enter Gender
- * ------------------------------------------*/
-void enter_gender()
-{
-    current_state = DETAILS_GENDER;
-
-    lcd_instruct(LCD_CLEAR_DISPLAY);
-    wait_mil(1);
-    lcd_data_string("   Gender");
-    lcd_instruct(LCD_LINE_THREE);
-    lcd_data(line_three_char);
-    lcd_data_string("Male");
-    lcd_instruct(LCD_LINE_FOUR);
-    lcd_data(line_four_char);
-    lcd_data_string("Female");
-}
-
-
-/* --------------------------------------------
- *                  Enter age
- * ------------------------------------------*/
-void enter_age()
-{
-    current_state = DETAILS_AGE;
-
-    lcd_instruct(LCD_CLEAR_DISPLAY);
-    wait_mil(1);
-    lcd_data_string("   Age");
-    lcd_instruct(LCD_LINE_THREE);
-    lcd_data_string("   ");
-
-    lcd_data(age_char_1);
-    lcd_data(age_char_2);
-    lcd_data(age_char_3);
-}
-
-
 /* --------------------------------------------
  *                  Update state
  * ------------------------------------------*/
@@ -775,7 +794,7 @@ void update_state()
         }
         else if (current_state == DETAILS_AGE)
         {
-            update_state_timer = TIMER_1500;
+            update_state_timer = TIMER_300;
 
             enter_age();
         }
@@ -791,3 +810,31 @@ void update_state()
     }
 }
 
+
+/* -----------------------------------
+ *             Pause screen timer
+   ---------------------------------*/
+int pause_screen_func(INT16U timer, int value)
+{
+    if (value == 1)
+    {
+        if(! --timer)
+        {
+            timer = TIMER_10000;
+            pause_screen();
+            return timer;
+        }
+        else
+            return timer;
+    }
+}
+
+
+/* -----------------------------------
+ *         Wide-Pulse-Checker
+   ---------------------------------*/
+void wide_pulse_check(int value)
+{
+    if (value > wide_pulse_threshold)
+        WP_flag = 1;
+}

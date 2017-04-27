@@ -1,0 +1,142 @@
+
+**** Build of configuration Debug for project FRT ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../lab8.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"lab8.d" -MT"lab8.o" -o"lab8.o"  "../lab8.c"
+subdir_rules.mk:9: recipe for target 'lab8.o' failed
+../lab8.c:12:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [lab8.o] Error 1
+'Building file: ../leds.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"leds.d" -MT"leds.o" -o"leds.o"  "../leds.c"
+subdir_rules.mk:9: recipe for target 'leds.o' failed
+../leds.c:23:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [leds.o] Error 1
+'Building file: ../main.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"main.d" -MT"main.o" -o"main.o"  "../main.c"
+subdir_rules.mk:9: recipe for target 'main.o' failed
+../main.c:25:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [main.o] Error 1
+'Building file: ../adc.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"adc.d" -MT"adc.o" -o"adc.o"  "../adc.c"
+../adc.c:19:1: warning: return type defaults to 'int'
+ init_adc()
+ ^
+../adc.c: In function 'init_adc':
+../adc.c:48:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+'Finished building: ../adc.c'
+' '
+'Building file: ../gpio.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"gpio.d" -MT"gpio.o" -o"gpio.o"  "../gpio.c"
+../gpio.c: In function 'init_gpio':
+../gpio.c:46:7: warning: variable 'dummy' set but not used [-Wunused-but-set-variable]
+   int dummy;
+       ^
+'Finished building: ../gpio.c'
+' '
+'Building file: ../startup_frt.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"startup_frt.d" -MT"startup_frt.o" -o"startup_frt.o"  "../startup_frt.c"
+'Finished building: ../startup_frt.c'
+' '
+'Building file: ../status_led.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"status_led.d" -MT"status_led.o" -o"status_led.o"  "../status_led.c"
+subdir_rules.mk:9: recipe for target 'status_led.o' failed
+../status_led.c:23:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [status_led.o] Error 1
+'Building file: ../FRT_Library/FreeRTOS/Source/croutine.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"FRT_Library/FreeRTOS/Source/croutine.d" -MT"FRT_Library/FreeRTOS/Source/croutine.o" -o"FRT_Library/FreeRTOS/Source/croutine.o"  "../FRT_Library/FreeRTOS/Source/croutine.c"
+FRT_Library/FreeRTOS/Source/subdir_rules.mk:9: recipe for target 'FRT_Library/FreeRTOS/Source/croutine.o' failed
+../FRT_Library/FreeRTOS/Source/croutine.c:54:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [FRT_Library/FreeRTOS/Source/croutine.o] Error 1
+'Building file: ../systick_frt.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"systick_frt.d" -MT"systick_frt.o" -o"systick_frt.o"  "../systick_frt.c"
+'Finished building: ../systick_frt.c'
+' '
+'Building file: ../tm4c123gh6pm_startup_ccs_gcc.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"tm4c123gh6pm_startup_ccs_gcc.d" -MT"tm4c123gh6pm_startup_ccs_gcc.o" -o"tm4c123gh6pm_startup_ccs_gcc.o"  "../tm4c123gh6pm_startup_ccs_gcc.c"
+'Finished building: ../tm4c123gh6pm_startup_ccs_gcc.c'
+' '
+'Building file: ../FRT_Library/FreeRTOS/Source/list.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"FRT_Library/FreeRTOS/Source/list.d" -MT"FRT_Library/FreeRTOS/Source/list.o" -o"FRT_Library/FreeRTOS/Source/list.o"  "../FRT_Library/FreeRTOS/Source/list.c"
+FRT_Library/FreeRTOS/Source/subdir_rules.mk:9: recipe for target 'FRT_Library/FreeRTOS/Source/list.o' failed
+../FRT_Library/FreeRTOS/Source/list.c:56:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [FRT_Library/FreeRTOS/Source/list.o] Error 1
+'Building file: ../FRT_Library/FreeRTOS/Source/queue.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"FRT_Library/FreeRTOS/Source/queue.d" -MT"FRT_Library/FreeRTOS/Source/queue.o" -o"FRT_Library/FreeRTOS/Source/queue.o"  "../FRT_Library/FreeRTOS/Source/queue.c"
+FRT_Library/FreeRTOS/Source/subdir_rules.mk:9: recipe for target 'FRT_Library/FreeRTOS/Source/queue.o' failed
+../FRT_Library/FreeRTOS/Source/queue.c:62:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [FRT_Library/FreeRTOS/Source/queue.o] Error 1
+'Building file: ../FRT_Library/FreeRTOS/Source/tasks.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"FRT_Library/FreeRTOS/Source/tasks.d" -MT"FRT_Library/FreeRTOS/Source/tasks.o" -o"FRT_Library/FreeRTOS/Source/tasks.o"  "../FRT_Library/FreeRTOS/Source/tasks.c"
+FRT_Library/FreeRTOS/Source/subdir_rules.mk:9: recipe for target 'FRT_Library/FreeRTOS/Source/tasks.o' failed
+../FRT_Library/FreeRTOS/Source/tasks.c:64:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [FRT_Library/FreeRTOS/Source/tasks.o] Error 1
+'Building file: ../FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/common.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/common.d" -MT"FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/common.o" -o"FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/common.o"  "../FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/common.c"
+FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/subdir_rules.mk:9: recipe for target 'FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/common.o' failed
+../FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/common.c:1:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/common.o] Error 1
+'Building file: ../FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/port.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/port.d" -MT"FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/port.o" -o"FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/port.o"  "../FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/port.c"
+FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/subdir_rules.mk:9: recipe for target 'FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/port.o' failed
+../FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/port.c:59:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [FRT_Library/FreeRTOS/Source/portable/GCC/ARM_CM4/port.o] Error 1
+'Building file: ../FRT_Library/FreeRTOS/Source/portable/MemMang/heap_2.c'
+'Invoking: GNU Compiler'
+"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc.exe" -c -mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C123GH6PM -I"C:/ti/ccsv7/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -I"C:/Users/Frederik/Documents/GitHub/EMP_ELITE/FRT/FRT_Library" -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -specs="nosys.specs" -MD -std=c99 -c -MMD -MP -MF"FRT_Library/FreeRTOS/Source/portable/MemMang/heap_2.d" -MT"FRT_Library/FreeRTOS/Source/portable/MemMang/heap_2.o" -o"FRT_Library/FreeRTOS/Source/portable/MemMang/heap_2.o"  "../FRT_Library/FreeRTOS/Source/portable/MemMang/heap_2.c"
+FRT_Library/FreeRTOS/Source/portable/MemMang/subdir_rules.mk:9: recipe for target 'FRT_Library/FreeRTOS/Source/portable/MemMang/heap_2.o' failed
+../FRT_Library/FreeRTOS/Source/portable/MemMang/heap_2.c:69:22: fatal error: FreeRTOS.h: No such file or directory
+ #include "FreeRTOS.h"
+                      ^
+compilation terminated.
+gmake: *** [FRT_Library/FreeRTOS/Source/portable/MemMang/heap_2.o] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****

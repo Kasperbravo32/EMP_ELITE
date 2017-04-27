@@ -106,11 +106,13 @@ void enter_gender();
 // Allows user to enter age
 void enter_age();
 
-// Processes ADC input from potmeter into age
-void ADC_AGE();
-
 // Calculates pulse from ticks
 int process_ticks(long int value);
 
+// Resets pause screen timer
+int pause_screen_func(INT16U timer, int value);
+
+// Checks if beat lasts more than 125ms
+void wide_pulse_check(int value);
 
 #endif /* MENU_HANDLER_H_ */
