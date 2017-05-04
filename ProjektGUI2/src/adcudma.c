@@ -37,9 +37,9 @@ typedef struct {
     INT32U   ctrl;
     INT32U   unused;
 } new_dma_ctrl_table;
-new_dma_ctrl_table dma_prim_ctrl_table[32] __attribute__ ((aligned (1024)));                      // Define primary control table
 
-new_dma_ctrl_table dma_alte_ctrl_table[32];                                                       // Define alternate control table
+volatile new_dma_ctrl_table dma_prim_ctrl_table[32] __attribute__ ((aligned (1024)));                      // Define primary control table
+volatile new_dma_ctrl_table dma_alte_ctrl_table[32];                                                       // Define alternate control table
 
 /* --------------------------------------------
  *           SETUP ADC0, PB4 / PB5
@@ -171,6 +171,54 @@ void ADC1_setup(int value)
  *  INPUT:  None.
  *  OUTPUT: None.
  * ------------------------------------------*/
+
+ void dma_queue_makespace( INT16U move )
+ {
+
+     if (move > DMA_MAX_QUEUE_SIZE)                                 // Queue overflow.
+         move = DMA_MAX_QUEUE_SIZE;                                 // Inserts the max allowed items.
+
+     if ( !move <= 0)
+     {
+         /*  Move Head  */
+         if (DMA_MAX_QUEUE_SIZE - dma_queue.head < move)                  // If head reaches start of array jump to end of array.
+             dma_queue.head = move - DMA_MAX_QUEUE_SIZE - dma_queue.head;                                 // move-1 because it makes 4 places free because that DMA_MAX_QUEUE_SIZE is a place in it self.
+         else
+             dma_queue.head = dma_queue.head + move;                // Move array head.
+
+         /*  Move tail  */
+         if (DMA_MAX_QUEUE_SIZE - dma_queue.tail < move)                                   // If tail reaches start of array jump to end of array.
+             dma_queue.tail = move - DMA_MAX_QUEUE_SIZE - dma_queue.tail;
+         else
+             dma_queue.tail = dma_queue.tail + move;                // Move array end.
+     }
+
+ }
+
+ void dma_interupt_handler( void )
+ {
+     static BOOLEAN dma_ch27_ctrl_sw = 0;                                    // Check if it's the primary og alternative control structure.
+
+     switch (UDMA_CHIS_R) {                                                  // The reason for the switchcase is to make room for expansion.
+         case (1<<DMA_CH27):
+             dma_queue_makespace( DMA_CH27_MOVESIZE );                       // Make room for transer.
+             if ( !dma_ch27_ctrl_sw ) {
+                 dma_prim_ctrl_table[DMA_CH27].dest = dma_queue.next_item[dma_queue.head - DMA_CH27_MOVESIZE - 1];
+                 dma_ch27_ctrl_sw = 1;
+             }
+             else
+             {
+                 dma_alte_ctrl_table[DMA_CH27].dest = dma_queue.next_item[dma_queue.head - DMA_CH27_MOVESIZE - 1];
+                 dma_ch27_ctrl_sw = 0;
+             }
+         break;
+
+         default:
+         break;
+     }
+
+ }
+
 void DMA_setup( void )
 {
     /*
@@ -201,20 +249,23 @@ void DMA_setup( void )
     for (INT16U i = 0; i < DMA_MAX_QUEUE_SIZE-1; i++) {                     // Need to use INT16U because i count higher than 255
         dma_queue.next_item[i] = &dma_queue.items[i+1];                     // Contruct pointer array.
     }
-    dma_queue.next_item[DMA_MAX_QUEUE_SIZE-1] = dma_queue.items;              // No "&" in front of "items" when it's an array.
+    dma_queue.next_item[DMA_MAX_QUEUE_SIZE-1] = dma_queue.items;            // No "&" in front of "items" when it's an array.
 
-    dma_queue.head = dma_queue.items;                                       // Adds first queue element.
-    dma_queue.tail = &dma_queue.items[DMA_MAX_QUEUE_SIZE-1];                  // Last queue element.
+    dma_queue.head = 0;                                                     // Adds first queue element.
+    dma_queue.tail = DMA_MAX_QUEUE_SIZE-1;                                  // Last queue element.
     /* End of data structure define. */
 
     /* Create control tabel. */
-    dma_prim_ctrl_table[DMA_CH27].dest = dma_queue.head;
+    dma_queue_makespace(DMA_CH27_MOVESIZE);
+    dma_prim_ctrl_table[DMA_CH27].dest = dma_queue.next_item[dma_queue.head];
     dma_prim_ctrl_table[DMA_CH27].sour = p_adc_sso0;
     dma_prim_ctrl_table[DMA_CH27].ctrl |= UDMA_CHCTL_DSTINC_32 + UDMA_CHCTL_DSTSIZE_32 + UDMA_CHCTL_SRCINC_32 + UDMA_CHCTL_SRCSIZE_32 + UDMA_CHCTL_ARBSIZE_4 + (DMA_CH27_MOVESIZE << 4) + UDMA_CHCTL_XFERMODE_PINGPONG;  // Control settings.
 
-    dma_alte_ctrl_table[DMA_CH27].dest = dma_queue.head;
+    dma_queue_makespace(DMA_CH27_MOVESIZE);
+    dma_alte_ctrl_table[DMA_CH27].dest = dma_queue.next_item[dma_queue.head];
     dma_alte_ctrl_table[DMA_CH27].sour = p_adc_sso0;                        // SS0 8 samples. Needs to be incrementet by 32
     dma_alte_ctrl_table[DMA_CH27].ctrl |= UDMA_CHCTL_DSTINC_32 + UDMA_CHCTL_DSTSIZE_32 + UDMA_CHCTL_SRCINC_32 + UDMA_CHCTL_SRCSIZE_32 + UDMA_CHCTL_ARBSIZE_4 + (DMA_CH27_MOVESIZE << 4) + UDMA_CHCTL_XFERMODE_PINGPONG;  // Control settings.
+
     // end of control table.
 
 // FEJL!!!!!
@@ -238,75 +289,14 @@ void dma_queue_add( INT32U items[] )
     if (move > DMA_MAX_QUEUE_SIZE)                                          // Queue overflow.
         move = DMA_MAX_QUEUE_SIZE;                                          // Inserts the max allowed items.
 
-    if (dma_queue.head == dma_queue.items)                                  // If head reaches start of array jump to end of array.
-        dma_queue.head = &dma_queue.items[DMA_MAX_QUEUE_SIZE-(move-1)];
-    else
-        dma_queue.head = dma_queue.head-move;                               // Move array head.
-
-    if (dma_queue.tail == dma_queue.items)                                  // If tail reaches start of array jump to end of array.
-        dma_queue.tail = &dma_queue.items[DMA_MAX_QUEUE_SIZE-(move-1)];
-    else
-        dma_queue.tail = dma_queue.tail-move;                               // Move array end.
+    dma_queue_makespace( move );
 
     // Insert items in array.
-    dma_queue.head = items;
-}
-
-void dma_queue_makespace( INT16U move )
-{
-
-    if (move > DMA_MAX_QUEUE_SIZE)                                          // Queue overflow.
-        move = DMA_MAX_QUEUE_SIZE;                                          // Inserts the max allowed items.
-
-    if ( !move <= 0)
+    for ( INT16U i = 0; i < move; i++ )
     {
-        /*  Move Head  */
-        if (dma_queue.head == dma_queue.items)                              // If head reaches start of array jump to end of array.
-            dma_queue.head = &dma_queue.items[DMA_MAX_QUEUE_SIZE-(move-1)]; // move-1 because it makes 4 places free because that DMA_MAX_QUEUE_SIZE is a place in it self.
-        else
-            dma_queue.head = dma_queue.head-move;                           // Move array head.
+        if (dma_queue.head == DMA_MAX_QUEUE_SIZE) {
 
-        /*  Move tail  */
-        if (dma_queue.tail == dma_queue.items)                              // If tail reaches start of array jump to end of array.
-            dma_queue.tail = &dma_queue.items[DMA_MAX_QUEUE_SIZE-(move-1)];
-        else
-            dma_queue.tail = dma_queue.tail-move;                           // Move array end.
+        }
+
     }
-
-}
-
-
-INT32U ** dma_get_queue( void )
-{
-    static INT32U *dma_queue_return[2];
-    dma_queue_return[0] = dma_queue.head;
-    dma_queue_return[1] = dma_queue.tail;
-
-    return dma_queue_return;
-}
-
-void dma_interupt_handler( void )
-{
-    static BOOLEAN dma_ch27_ctrl_sw = 0;                                    // Check if it's the primary og alternative control structure.
-
-    switch (UDMA_CHIS_R) {                                                  // The reason for the switchcase is to make room for expansion.
-        case (1<<DMA_CH27):
-            dma_queue_makespace( DMA_CH27_MOVESIZE );                       // Make room for transer.
-            if ( !dma_ch27_ctrl_sw ) {
-                dma_prim_ctrl_table[DMA_CH27].dest = dma_queue.head;
-                dma_prim_ctrl_table[DMA_CH27].dest = dma_queue.head;
-                dma_ch27_ctrl_sw = 1;
-            }
-            else
-            {
-                dma_prim_ctrl_table[DMA_CH27].dest = dma_queue.head;
-                dma_alte_ctrl_table[DMA_CH27].dest = dma_queue.head;
-                dma_ch27_ctrl_sw = 0;
-            }
-        break;
-
-        default:
-        break;
-    }
-
 }

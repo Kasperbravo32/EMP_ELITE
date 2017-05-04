@@ -13,11 +13,11 @@
 #define  DMA_CH27_MOVESIZE  4        // Number of elements to be moved.
 #define  DMA_MAX_QUEUE_SIZE 1024     //
 
-INT32U *p_adc_sso0 = (INT32U *)0x40039048;
+INT32U *p_adc_sso0 = (INT32U *)0x40039048;  // Address to ADC0SS0 pointer.
 
 struct new_dma_queue {                                                  // Struct to hold data structure.
-    INT32U  *head;                                                      // First item in the list.
-    INT32U  *tail;                                                      // Last item in the list.
+    INT16U  head;                                                      // First item in the list.
+    INT16U  tail;                                                      // Last item in the list.
     INT32U  *next_item[DMA_MAX_QUEUE_SIZE];                             // array of pointers to the next item in the list.
     INT32U  items[DMA_MAX_QUEUE_SIZE];                                  // Array with data values.
 };
